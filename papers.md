@@ -40,6 +40,7 @@ Tuesday, September 28
 - [MLPerf Training Benchmark](https://arxiv.org/abs/1910.01500)
 - [Roofline: an insightful visual performance model for multicore architectures](https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf)
 - [Evaluating the Energy Efficiency of Deep Convolutional Neural Networks on CPUs and GPUs](https://ieeexplore.ieee.org/document/7723730)
+- [Deep Learning Language Modeling Workloads: Where Time Goes on Graphics Processors](https://ieeexplore.ieee.org/document/9041972)
 
 Tuesday, October 5
 ----
@@ -74,10 +75,14 @@ Tuesday, October 19
 
 **Readings:**
 - [XNOR-Net: ImageNet Classification Using Binary Convolutional Neural Networks](https://arxiv.org/abs/1603.05279)
+- [XOR-Net: An Efficient Computation Pipeline for Binary Neural Network Inference on Edge Devices](https://ieeexplore.ieee.org/document/9359148)
 - [MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications](https://arxiv.org/abs/1704.04861)
 - [Fast Convolutional Nets With fbfft: A GPU Performance Evaluation](https://arxiv.org/abs/1412.7580)
+- [FFT Convolutions are Faster than Winograd on Modern CPUs, Here’s Why](https://arxiv.org/abs/1809.07851)
+- [Fast Algorithms for Convolutional Neural Networks](https://arxiv.org/abs/1509.09308)
 - [Efficient softmax approximation for GPUs](https://arxiv.org/abs/1609.04309)
-- 
+- [Adaptive Input Representations for Neural Language Modeling](https://arxiv.org/abs/1809.1085)
+
 
 
 Tuesday, October 26
