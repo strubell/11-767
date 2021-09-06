@@ -1,16 +1,3 @@
-**Miscellaneous/yet-uncategorized readings:**
-- [Towards the Systematic Reporting of the Energy and Carbon Footprints of Machine Learning
-](https://jmlr.org/papers/v21/20-312.html)
-- [Tackling Climate Change with Machine Learning](https://arxiv.org/abs/1906.05433)
-- [The Science of Scientific Writing](https://www.americanscientist.org/blog/the-long-view/the-science-of-scientific-writing)
-- [Cerebras pubs](https://cerebras.net/resource/publications/)
-
-
-
-**Training/Finetuning**
-- [Low-Shot Learning with Imprinted Weights](https://arxiv.org/abs/1712.07136)
-
-
 Tuesday, September 14
 ----
 **Lecture:** Compression I (Distillation and pruning)
@@ -21,6 +8,9 @@ Tuesday, September 14
 - [TernaryBERT: Distillation-aware Ultra-low Bit BERT](https://www.aclweb.org/anthology/2020.emnlp-main.37/)
 - [MobileBERT: a Compact Task-Agnostic BERT for Resource-Limited Devices](https://www.aclweb.org/anthology/2020.acl-main.195/)
 - [Distilling Large Language Models into Tiny and Effective Students using pQRNN](https://arxiv.org/abs/2101.08890)
+- [The curious case of developmental BERTology: On sparsity, transfer learning, generalization and the brain](https://arxiv.org/abs/2007.03774)
+- [The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks](https://arxiv.org/abs/1803.03635)
+- 
 
 
 Thursday, September 21
@@ -44,8 +34,11 @@ Tuesday, September 28
 - [Show Your Work: Improved Reporting of Experimental Results](https://aclanthology.org/D19-1224/)
 - [Showing Your Work Doesn’t Always Work](https://aclanthology.org/2020.acl-main.246/)
 - [The Hardware Lottery](https://arxiv.org/abs/2009.06489)
+- [HULK: An Energy Efficiency Benchmark Platform for Responsible Natural Language Processing](https://arxiv.org/abs/2002.05829)
+- [MLPerf Inference Benchmark](https://arxiv.org/abs/1911.02549)
+- [MLPerf Training Benchmark](https://arxiv.org/abs/1910.01500)
+- [Roofline: an insightful visual performance model for multicore architectures](https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf)
 - add some stuff here about benchmarking specific parts of CNNs
-- something about roofline
 - 
 
 Tuesday, October 5
@@ -58,11 +51,11 @@ Tuesday, October 5
 - [HAWQ: Hessian AWare Quantization of Neural Networks with Mixed-Precision](https://arxiv.org/abs/1905.03696)
 - [Bayesian Bits: Unifying Quantization and Pruning](https://arxiv.org/abs/2005.07093)
 - [Scalable Methods for 8-bit Training of Neural Networks](https://arxiv.org/abs/1805.11046)
-- [The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks](https://arxiv.org/abs/1803.03635)
 - [Train Large, Then Compress: Rethinking Model Size for Efficient Training and Inference of Transformers](https://arxiv.org/abs/2002.11794)
 - [Once-for-All: Train One Network and Specialize it for Efficient Deployment](https://arxiv.org/abs/1908.09791)
 - [Q-BERT: Hessian Based Ultra Low Precision Quantization of BERT](https://arxiv.org/abs/1909.05840)
 - [I-BERT: Integer-only BERT Quantization](https://arxiv.org/abs/2101.01321)
+- Also, see pruning readings listed under September 14.
 
 
 Tuesday, October 12
