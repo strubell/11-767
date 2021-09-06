@@ -35,11 +35,11 @@ Tuesday, September 28
 - [Showing Your Work Doesn’t Always Work](https://aclanthology.org/2020.acl-main.246/)
 - [The Hardware Lottery](https://arxiv.org/abs/2009.06489)
 - [HULK: An Energy Efficiency Benchmark Platform for Responsible Natural Language Processing](https://arxiv.org/abs/2002.05829)
+- [An Analysis of Deep Neural Network Models for Practical Applications](https://arxiv.org/abs/1605.07678)
 - [MLPerf Inference Benchmark](https://arxiv.org/abs/1911.02549)
 - [MLPerf Training Benchmark](https://arxiv.org/abs/1910.01500)
 - [Roofline: an insightful visual performance model for multicore architectures](https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf)
-- add some stuff here about benchmarking specific parts of CNNs
-- 
+- [Evaluating the Energy Efficiency of Deep Convolutional Neural Networks on CPUs and GPUs](https://ieeexplore.ieee.org/document/7723730)
 
 Tuesday, October 5
 ----
@@ -140,5 +140,7 @@ Tuesday, November 30
 - [Tackling Climate Change with Machine Learning](https://arxiv.org/abs/1906.05433)
 - [IrEne: Interpretable Energy Prediction for Transformers](https://arxiv.org/abs/2106.01199)
 - [On the opportunities and risks of foundation models (Section 5.3)](https://arxiv.org/abs/2108.07258)
+- [Carbontracker: Tracking and Predicting the Carbon Footprint of Training Deep Learning Models](https://arxiv.org/abs/2007.03051)
+- [Quantifying the Carbon Emissions of Machine Learning](https://arxiv.org/abs/1910.09700)
 
 
