@@ -10,7 +10,7 @@ Tuesday, September 14
 - [Distilling Large Language Models into Tiny and Effective Students using pQRNN](https://arxiv.org/abs/2101.08890)
 - [The curious case of developmental BERTology: On sparsity, transfer learning, generalization and the brain](https://arxiv.org/abs/2007.03774)
 - [The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks](https://arxiv.org/abs/1803.03635)
-- 
+- [Sequence-Level Knowledge Distillation](https://arxiv.org/abs/1606.07947)
 
 
 Thursday, September 21
@@ -94,9 +94,10 @@ Tuesday, October 26
 - [PoWER-BERT: Accelerating BERT Inference via Progressive Word-vector Elimination](https://arxiv.org/abs/2001.08950)
 - [Are Larger Pretrained Language Models Uniformly Better? Comparing Performance at the Instance Level](https://arxiv.org/abs/2105.06020)
 - [Are Sixteen Heads Really Better Than One?](http://papers.nips.cc/paper/9551-are-sixteen-heads-really-better-than-one)
+Training:
 - [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://arxiv.org/abs/2101.00190)
-- Electra/Electric
-- Adapters
+- [Pre-Training Transformers as Energy-Based Cloze Models](https://arxiv.org/abs/2012.08561)
+- [Parameter-Efficient Transfer Learning for NLP](https://arxiv.org/abs/1902.00751)
 
 
 Tuesday, November 2
