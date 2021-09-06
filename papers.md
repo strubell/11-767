@@ -114,21 +114,21 @@ Tuesday, November 9
 **Lecture:** Paper presentations. 
 
 **Readings:**
-Your choice, related to your project. Must be proposed by October 12.
+Your choice, drawn from this list and/or related to your project. Must be proposed by October 12.
 
 Tuesday, November 16
 ----
 **Lecture:** Paper presentations. 
 
 **Readings:**
-Your choice, related to your project. Must be proposed by October 12.
+Your choice, drawn from this list and/or related to your project. Must be proposed by October 12.
 
 Tuesday, November 23
 ----
 **Lecture:** Paper presentations. 
 
 **Readings:**
-Your choice, related to your project. Must be proposed by October 12.
+Your choice, drawn from this list and/or related to your project. Must be proposed by October 12.
 
 Tuesday, November 30
 ----
