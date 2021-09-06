@@ -71,7 +71,7 @@ Tuesday, October 12
 
 Tuesday, October 19
 ----
-**Lecture:** The long tail: FFTs, XOR, FPGAs, ...
+**Lecture:** Architecture-specific tricks
 
 **Readings:**
 - [XNOR-Net: ImageNet Classification Using Binary Convolutional Neural Networks](https://arxiv.org/abs/1603.05279)
@@ -82,6 +82,9 @@ Tuesday, October 19
 - [Fast Algorithms for Convolutional Neural Networks](https://arxiv.org/abs/1509.09308)
 - [Efficient softmax approximation for GPUs](https://arxiv.org/abs/1609.04309)
 - [Adaptive Input Representations for Neural Language Modeling](https://arxiv.org/abs/1809.1085)
+- [A Study of Non-autoregressive Model for Sequence Generation](https://arxiv.org/abs/2004.10454)
+- [Mask-Predict: Parallel Decoding of Conditional Masked Language Models](https://arxiv.org/abs/1904.09324)
+- [Non-autoregressive neural machine translation](https://arxiv.org/abs/1711.02281)
 
 
 
