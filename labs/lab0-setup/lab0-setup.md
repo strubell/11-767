@@ -1,10 +1,12 @@
 Lab 0: Hardware setup
 ===
+The goal of this lab is for you to become more familiar with the hardware platform you will be working with this semester, and for you to complete basic setup so that everyone in the group should be able to work remotely on the device going forward. By the end of class today, everyone in your group should be able to ssh in to the device, use the camera to take a picture, record audio, run a basic NLP model, and run a basic CV model. 
 
-Group name
+If you successfully complete all those tasks, then your final task is to write a script that pipes together I/O with a model. For example, you could write a script that uses the camera to capture an image, then runs classification on that image. Or you could capture audio, run speech-to-text, then run sentiment analysis on that text.
+
+Group name:
 ---
-Names of group members present in lab today.
-
+Group members present in lab today:
 
 1: Set up your device.
 ----
