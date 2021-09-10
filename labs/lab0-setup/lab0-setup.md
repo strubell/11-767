@@ -22,7 +22,7 @@ Depending on your hardware, follow the instructions provided in this directory: 
 
 3: Putting it all together
 ----
-5. Now, you should be able to take a picture, record audio, run a basic computer vision model, and run a basic NLP model. Now, write a script that pipes I/O to models. For example, write a script that takes a picture then runs a detection model on that image, and/or write a script that . Include the script at the end of your lab report.
+5. Now, you should be able to take a picture, record audio, run a basic computer vision model, and run a basic NLP model. Now, write a script that pipes I/O to models. For example, write a script that takes a picture then runs a detection model on that image, and/or write a script that runs speech-to-text on audio, then performs classification on the resulting text. Include the script at the end of your lab report.
 6. Describe what the script you wrote does (document it.) 
 7. Did you have any trouble getting this running? If so, describe what difficulties you ran into, and how you tried to resolve them.
 
