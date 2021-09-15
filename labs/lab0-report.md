@@ -11,6 +11,5 @@ This included
 3. Installing all the necessary packages in the base python installation (Rust, PyTorch, ...)
 4. Installing Docker and downloading the official docker image with the above software
 5. Test pheriphericals (Camera/Microphone)
-6. Test SST and TTS
-
-
+6. Make script for text generation and test it
+7. Test SST and TTS
