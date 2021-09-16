@@ -9,17 +9,17 @@ Group members present in lab today:
 1: Ideas
 ----
 Write down 3-5 project ideas your group considered (a few sentences each). Depending on your group and process, the ideas may be very different, or they may be variations on one central idea.
-1.
-2.
-3.
-4.
-5.
+ 1. ...
+ 2. ...
+ 3. ...
+ 4. ...
+ 5. ...
 
 2: Narrowing
 ----
 Choose two of the above ideas. For each one:
 1. How would this project leverage the expertise of each member of your group?
-2. In completing this project, what new things would you learn about (1) hardware (2) efficiency (3) I/O modalities (4) other?
+2. In completing this project, what new things would you learn about: (a) hardware (b) efficiency in machine learning (c) I/O modalities (d) other?
 3. What potential road blocks or challenges do you foresee in this project? How might you adjust the project scope in case these aspects present unsurmountable challenges?
 4. How could you potentially extend the scope of this project if you had e.g. one more month?
 
