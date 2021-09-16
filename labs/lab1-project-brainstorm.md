@@ -32,7 +32,7 @@ Your outline should include:
 - Motivation
 - Hypotheses (key ideas)
 - How you will test those hypotheses: datasets, baselines, ablations, and other experiments or analyses.
-- I/O: What are the inputs and output modalities? What tools will you use to convert device inputs to a format readable by the model, and vice versa?
+- I/O: What are the inputs and output modalities? What existing tools will you use to convert device inputs (that are not a core part of your project) to a format readable by the model, and vice versa?
 - Hardware, including any peripherals required, and reasoning for why that hardware was chosen for this project. (This is where you will request additional hardware and/or peripherals for your project!)
 - Potential challenges, and how you might adjust the project to adapt to those challenges.
 - Potential extensions to the project.
