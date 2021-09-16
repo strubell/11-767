@@ -41,7 +41,7 @@ Install packages
 | ---  | --- | --- | --- |
 | Torch   | - | `wget https://nvidia.box.com/shared/static/h1z9sw4bb1ybi0rm3tu8qdj8hs05ljbm.whl -O torch-1.9.0-cp36-cp36m-linux_aarch64.whl`<br>`sudo apt-get install python3-pip libopenblas-base libopenmpi-dev`  | `pip3 install Cython`<br>`pip3 install numpy torch-1.9.0-cp36-cp36m-linux_aarch64.whl`|
 | Transformers | - | `pip3 install setuptools-rust` <br> `pip3 install transformers` | `python3 generate_text.py`| 
-| Camera       | `sudo apt install -y libgl1-mesa-glx` | `pip3 install opencv-python`<br> `sudo nano /boot/firmware/config.txt`, add line `start_x=1` and restart. | `python3 capture_photo.py`| 
+| Camera       | `sudo apt install -y libgl1-mesa-glx` | `pip3 install opencv-python` | `python3 capture_photo.py`| 
 | Torchvision | - |  | `python3 classify_image` |
 | Microphone   | `sudo apt install -y libportaudio2` |  | `python3 capture_audio.py` |
 | TTS      | `sudo apt install espeak`  | - |  `espeak "this is a test"`|
@@ -52,6 +52,10 @@ Bugs
 ----
 1. Speaker for espeak -- Can't switch outputs
 2. Change camera resolution -- opencv dependencies issues?!
+
+Updates:
+---
+1. Removing "`sudo nano /boot/firmware/config.txt`, add line `start_x=1` and restart." from camera setup, does not appear to be necessary
 
 Set up CMU VPN for remote access
 ----
