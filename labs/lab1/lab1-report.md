@@ -36,6 +36,8 @@ Modern state-of-the-art systems often have billions of parameters, which makes i
 
 ### Hypotheses
 
+With the help of adaptive compute and smart de-serialization, we can optimize the latency under the constraints of on-device memory for large models without losing accuracy. This is in contrast to the traditional pruning, distillation and quantization methods, where one has to tradeoff between accuracy and model size/latency. 
+
 ### Setup
 
 #### Datasets
