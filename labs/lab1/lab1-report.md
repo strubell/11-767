@@ -32,11 +32,11 @@ Also, we realized that these two ideas also fitted nicely with each other since 
 
 ### Motivation
 
-Modern state-of-the-art systems often have billions of parameters, which makes it difficult to run on small devices with litmited memory (e.g. Jetson). 
+Modern state-of-the-art systems often have billions of parameters, which makes it difficult to run on small devices with limited memory (e.g. Jetson). However current methods for circumventing this have trade-offs in terms of accuracy that are not always desirable.
 
 ### Hypotheses
 
-With the help of adaptive compute and smart de-serialization, we can optimize the latency under the constraints of on-device memory for large models without losing accuracy. This is in contrast to the traditional pruning, distillation and quantization methods, where one has to tradeoff between accuracy and model size/latency. 
+With the help of adaptive compute and smart de-serialization, we can optimize the latency under the constraints of on-device memory for large models without losing accuracy. This is in contrast to the traditional pruning, distillation, and quantization methods, where one has to tradeoff between accuracy and model size/latency. 
 
 ### Setup
 
@@ -52,10 +52,10 @@ With the help of adaptive compute and smart de-serialization, we can optimize th
 
 #### Experiments
 
-Evaluations will be performed using standard benchmark tasks in vision and language, including: image classification, GLUE tasks, and visual question answering.
+Evaluations will be performed using standard benchmark tasks in vision and language, including image classification, GLUE tasks, and visual question answering.
 
 Currently, state-of-the-art models are too large to load into memory of standard edge accelerators. To evaluate the success of model serialization, we will determine the largest models that can be loaded into memory without any modification and observe whether model serialization can enable larger models to be executed at all. We will experiment with loading different numbers of parameters into memory and serialize the model at different frequencies.
 
-We will evalute the runtime speedup of our proposed adaptive inference methods by measuring the average latency for forward passes through the model. As these methods will reduce the total model parameters used, we expect to observe performance degradation. We will experiment with early exiting and feature selection methods to determine the relationship between infrerence speedups and resulting model performance.
+We will evaluate the runtime speedup of our proposed adaptive inference methods by measuring the average latency for forward passes through the model. As these methods will reduce the total model parameters used, we expect to observe performance degradation. We will experiment with early exiting and feature selection methods to determine the relationship between inference speedups and resulting model performance.
 
 To evaluate the impact of our proposed method on real-world scenarios, we plan to experiment with image and natural language classification *on-the-wild* to see how adaptive computation and model de-serialization affect latency and memory usage.
