@@ -51,6 +51,9 @@ With the help of adaptive compute and smart de-serialization, we can optimize th
 - Camera, Microphone for practical experiments
 
 #### Experiments
+
+Evaluations will be performed using standard benchmark tasks in vision and language, including: image classification, GLUE tasks, and visual question answering.
+
 Currently, state-of-the-art models are too large to load into memory of standard edge accelerators. To evaluate the success of model serialization, we will determine the largest models that can be loaded into memory without any modification and observe whether model serialization can enable larger models to be executed at all. We will experiment with loading different numbers of parameters into memory and serialize the model at different frequencies.
 
 We will evalute the runtime speedup of our proposed adaptive inference methods by measuring the average latency for forward passes through the model. As these methods will reduce the total model parameters used, we expect to observe performance degradation. We will experiment with early exiting and feature selection methods to determine the relationship between infrerence speedups and resulting model performance.
