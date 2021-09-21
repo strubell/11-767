@@ -48,6 +48,25 @@ Name of team being reviewed: Masters of Science
 
 3: Review 3
 ----
+Name of team being reviewed: Multimodal Learning
+1. How does your team's background align with that of the proposed project?
+    - In general there is some alignment since some group members have experience with multi-modality and most have experience with natural language processing.
+2. Are the motivation, hypotheses, and plan to test those hypotheses clear? If not, where could the team provide more clarification or explanation?
+    - While the task is specified, there is very little detail on the dataset and model.
+    - Also there is very little detail on what particular techniques they want to experiment with for optimizing the model for an on-device setting.
+    - The first two hypotheses have been answered in previous literature. It would not be surprising to see positive answers to them. The team may want to further specify the hypotheses for their application
+3. Does the project seem properly scoped for a semester-long project? Why or why not? How might the team be able to adjust the project to be appropriately scoped?
+    - Current proposal seems limited for the scope of the semester as it primarily focuses on initial deployment of models to the device.
+    - Including more details on what techniques they are going to experiment with to optimize the model could give a better impression of the scope of their proposal
+
+4. Are there any potential ethical concerns that arise from the proposed project?
+    - Project appears to be building for disabled users, the group should make sure to understand if their selected datasets are useful or provide a good case study for working with the target group.
+
+5. Any additional comments or concerns? Any related work you know of that might be relevant and/or helpful?
+    - Explicitly specify device and pretrained model. Pretrained model selection will depend on exact modalities.
+    - Need a backup plan if the baseline model can't fit into the device.
+    - I would also include (maybe as a stretch goal) real-time inference by outputting the result to a display or speaker. Currently no information about this is given.
+
 
 
 4: Receiving feedback
