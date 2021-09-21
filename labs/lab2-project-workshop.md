@@ -2,7 +2,9 @@ Lab 2: Project Workshopping / Peer Feedback
 ===
 The goal of this lab is for you to give and receive peer feedback on project outlines before writing up your proposal. 
 
-**You can find your team's reviewing assignments in the first sheet [here](https://docs.google.com/spreadsheets/d/1_pw_lYkFutMjuL1_j6RdxNyQlj7LvF_f5eEKr1Qm-w0/edit?usp=sharing). The second sheet contains links to all teams' outlines to review. Once you have reviewed an outline, please enter a link to your review (e.g. a Google Doc, public github repo, etc.) in the third sheet.**
+- **You can find your team's reviewing assignments in the first sheet [here](https://docs.google.com/spreadsheets/d/1_pw_lYkFutMjuL1_j6RdxNyQlj7LvF_f5eEKr1Qm-w0/edit?usp=sharing).**
+- **The second sheet contains links to all teams' outlines to review.**
+- **Once you have reviewed an outline, please enter a link to your review (e.g. a Google Doc, public github repo, etc.) replacing your team name in the corresponding other team's row in the third sheet.**
 
 
 Here's a reminder of what your completed project proposal should include:
