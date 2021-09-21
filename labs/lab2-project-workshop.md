@@ -1,6 +1,11 @@
 Lab 2: Project Workshopping / Peer Feedback
 ===
-The goal of this lab is for you to give and receive peer feedback on project outlines before writing up your proposal. Here's a reminder of what your completed project proposal should include:
+The goal of this lab is for you to give and receive peer feedback on project outlines before writing up your proposal. 
+
+**You can find your team's reviewing assignments in the first sheet [here](https://docs.google.com/spreadsheets/d/1_pw_lYkFutMjuL1_j6RdxNyQlj7LvF_f5eEKr1Qm-w0/edit?usp=sharing). The second sheet contains links to all teams' outlines to review. Once you have reviewed an outline, please enter a link to your review (e.g. a Google Doc, public github repo, etc.) in the third sheet.**
+
+
+Here's a reminder of what your completed project proposal should include:
 - Motivation
 - Hypotheses (key ideas)
 - How you will test those hypotheses: datasets, ablations, and other experiments or analyses.
@@ -19,17 +24,27 @@ Group members present in lab today:
 
 1: Review 1
 ----
-
-
+1. How does your team's background align with that of the proposed project (e.g. if the proposed project is in CV but your team's backgorund is mostly NLP, state that here. Similarly, if your team also has someone who specializes in the area of the proposed project, state that here.)
+2. Are the motivation, hypotheses, and plan to test those hypotheses clear? If not, where could the team provide more clarification or explanation? 
+3. Does the project seem properly scoped for a semester-long project? Why or why not? How might the team be able to adjust the project to be appropriately scoped?
+4. Are there any potential ethical concerns that arise from the proposed project? 
+5. Any additional comments or concerns? Any related work you know of that might be relevant and/or helpful?
 
 2: Review 2
 ----
-
-
+1. How does your team's background align with that of the proposed project (e.g. if the proposed project is in CV but your team's backgorund is mostly NLP, state that here. Similarly, if your team also has someone who specializes in the area of the proposed project, state that here.)
+2. Are the motivation, hypotheses, and plan to test those hypotheses clear? If not, where could the team provide more clarification or explanation? 
+3. Does the project seem properly scoped for a semester-long project? Why or why not? How might the team be able to adjust the project to be appropriately scoped?
+4. Are there any potential ethical concerns that arise from the proposed project? 
+5. Any additional comments or concerns? Any related work you know of that might be relevant and/or helpful?
 
 3: Review 3
 ----
-
+1. How does your team's background align with that of the proposed project (e.g. if the proposed project is in CV but your team's backgorund is mostly NLP, state that here. Similarly, if your team also has someone who specializes in the area of the proposed project, state that here.)
+2. Are the motivation, hypotheses, and plan to test those hypotheses clear? If not, where could the team provide more clarification or explanation? 
+3. Does the project seem properly scoped for a semester-long project? Why or why not? How might the team be able to adjust the project to be appropriately scoped?
+4. Are there any potential ethical concerns that arise from the proposed project? 
+5. Any additional comments or concerns? Any related work you know of that might be relevant and/or helpful?
 
 4: Receiving feedback
 ----
