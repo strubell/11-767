@@ -73,8 +73,7 @@ Name of team being reviewed: Multimodal Learning
 ----
 Read the feedback that the other groups gave on your proposal, and discuss as a group how you will integrate that into your proposal. List 3-5 useful pieces of feedback from your reviews that you will integrate into your proposal:
 
-1. Add multi-modality as scretch goal rather part of the core proposal
+1. Add multi-modality as stretch goal rather part of the core proposal
 2. Be more explicit about how we are going to evaluate the proposed method on-device
-3. ...
-4. ...
-5. ...
+3. Increased specification of initial domains and model selections.
+4. Include descriptions of datasets and any necessary preprocessing for our experiments.
