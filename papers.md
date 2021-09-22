@@ -1,3 +1,13 @@
+Tuesday, September 7
+----
+**Lecture:** Practical applications
+
+**Readings:**
+- [Natural Language Processing with Small Feed-Forward Networks](https://arxiv.org/abs/1708.00214)
+- [Machine Learning at Facebook: Understanding Inference at the Edge](https://research.fb.com/wp-content/uploads/2018/12/Machine-Learning-at-Facebook-Understanding-Inference-at-the-Edge.pdf)
+- [Recognizing People in Photos Through Private On-Device Machine Learning](https://machinelearning.apple.com/research/recognizing-people-photos)
+- [Knowledge Transfer for Efficient On-device False Trigger Mitigation](https://arxiv.org/abs/2010.10591)
+
 Tuesday, September 14
 ----
 **Lecture:** Compression I (Distillation and pruning)
