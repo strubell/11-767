@@ -163,5 +163,6 @@ Tuesday, November 30
 - [On the opportunities and risks of foundation models (Section 5.3)](https://arxiv.org/abs/2108.07258)
 - [Carbontracker: Tracking and Predicting the Carbon Footprint of Training Deep Learning Models](https://arxiv.org/abs/2007.03051)
 - [Quantifying the Carbon Emissions of Machine Learning](https://arxiv.org/abs/1910.09700)
+- [AutoFL: Enabling Heterogeneity-Aware Energy Efficient Federated Learning](https://arxiv.org/abs/2107.08147)
 
 
