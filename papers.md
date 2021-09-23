@@ -1,8 +1,19 @@
+Tuesday, September 7
+----
+**Lecture:** Practical applications
+
+**Readings:**
+- [Natural Language Processing with Small Feed-Forward Networks](https://arxiv.org/abs/1708.00214)
+- [Machine Learning at Facebook: Understanding Inference at the Edge](https://research.fb.com/wp-content/uploads/2018/12/Machine-Learning-at-Facebook-Understanding-Inference-at-the-Edge.pdf)
+- [Recognizing People in Photos Through Private On-Device Machine Learning](https://machinelearning.apple.com/research/recognizing-people-photos)
+- [Knowledge Transfer for Efficient On-device False Trigger Mitigation](https://arxiv.org/abs/2010.10591)
+
 Tuesday, September 14
 ----
 **Lecture:** Compression I (Distillation and pruning)
 
 **Readings:**
+- [Model Compression](https://www.cs.cornell.edu/~caruana/compression.kdd06.pdf)
 - [Distilling the Knowledge in a Neural Network](https://arxiv.org/abs/1503.02531)
 - [DistilBERT](https://arxiv.org/abs/1910.01108)
 - [TernaryBERT: Distillation-aware Ultra-low Bit BERT](https://www.aclweb.org/anthology/2020.emnlp-main.37/)
@@ -71,7 +82,7 @@ Tuesday, October 12
 
 Tuesday, October 19
 ----
-**Lecture:** Architecture-specific tricks
+**Lecture:** Architecture-specific tricks I: CNNs
 
 **Readings:**
 - [XNOR-Net: ImageNet Classification Using Binary Convolutional Neural Networks](https://arxiv.org/abs/1603.05279)
@@ -90,7 +101,7 @@ Tuesday, October 19
 
 Tuesday, October 26
 ----
-**Lecture:** Making transformers faster.
+**Lecture:** Architecture-specific tricks II: Transformers
 
 **Readings:**
 - [Funnel-Transformer: Filtering out Sequential Redundancy for Efficient Language Processing](https://arxiv.org/abs/2006.03236)
@@ -102,10 +113,7 @@ Tuesday, October 26
 - [PoWER-BERT: Accelerating BERT Inference via Progressive Word-vector Elimination](https://arxiv.org/abs/2001.08950)
 - [Are Larger Pretrained Language Models Uniformly Better? Comparing Performance at the Instance Level](https://arxiv.org/abs/2105.06020)
 - [Are Sixteen Heads Really Better Than One?](http://papers.nips.cc/paper/9551-are-sixteen-heads-really-better-than-one)
-Training:
-- [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://arxiv.org/abs/2101.00190)
-- [Pre-Training Transformers as Energy-Based Cloze Models](https://arxiv.org/abs/2012.08561)
-- [Parameter-Efficient Transfer Learning for NLP](https://arxiv.org/abs/1902.00751)
+- [Are Pre-trained Convolutions Better than Pre-trained Transformers?](https://aclanthology.org/2021.acl-long.335/)
 
 
 Tuesday, November 2
@@ -119,10 +127,16 @@ Tuesday, November 2
 
 Tuesday, November 9
 ----
-**Lecture:** Paper presentations. 
+**Lecture:** Accelerating training.
 
 **Readings:**
-Your choice, drawn from this list and/or related to your project. Must be proposed by October 12.
+- [Prefix-Tuning: Optimizing Continuous Prompts for Generation](https://arxiv.org/abs/2101.00190)
+- [Pre-Training Transformers as Energy-Based Cloze Models](https://arxiv.org/abs/2012.08561)
+- [Parameter-Efficient Transfer Learning for NLP](https://arxiv.org/abs/1902.00751)
+- [Accelerating Deep Learning by Focusing on the Biggest Losers](https://arxiv.org/abs/1910.00762)
+- [Dataset Distillation](https://arxiv.org/abs/1811.10959)
+- [Competence-based curriculum learning for neural machine translation](https://arxiv.org/abs/1903.09848)
+- [Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks](https://arxiv.org/abs/1703.03400)
 
 Tuesday, November 16
 ----
@@ -150,5 +164,6 @@ Tuesday, November 30
 - [On the opportunities and risks of foundation models (Section 5.3)](https://arxiv.org/abs/2108.07258)
 - [Carbontracker: Tracking and Predicting the Carbon Footprint of Training Deep Learning Models](https://arxiv.org/abs/2007.03051)
 - [Quantifying the Carbon Emissions of Machine Learning](https://arxiv.org/abs/1910.09700)
+- [AutoFL: Enabling Heterogeneity-Aware Energy Efficient Federated Learning](https://arxiv.org/abs/2107.08147)
 
 
