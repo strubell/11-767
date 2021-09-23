@@ -113,6 +113,7 @@ Tuesday, October 26
 - [PoWER-BERT: Accelerating BERT Inference via Progressive Word-vector Elimination](https://arxiv.org/abs/2001.08950)
 - [Are Larger Pretrained Language Models Uniformly Better? Comparing Performance at the Instance Level](https://arxiv.org/abs/2105.06020)
 - [Are Sixteen Heads Really Better Than One?](http://papers.nips.cc/paper/9551-are-sixteen-heads-really-better-than-one)
+- [Are Pre-trained Convolutions Better than Pre-trained Transformers?](https://aclanthology.org/2021.acl-long.335/)
 
 
 Tuesday, November 2
