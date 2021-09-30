@@ -14,7 +14,7 @@ Group members present in lab today:
 ----
 1. Which models and/or model variants will your group be benchmarking? Please be specific.
 2. Why did you choose these models?
-3. For each model, you will measure parameter count, inference latency, and energy use. For latency and energy, you will also be varying a parameter such as input size or batch size. What are your hypothesis for how the models will compare according to these metrics? Explain.
+3. For each model, you will measure parameter count, inference latency, and energy use. For latency and energy, you will also be varying a parameter such as input size or batch size. What are your hypotheses for how the models will compare according to these metrics? Explain.
 
 2: Parameter count
 ----
@@ -39,7 +39,7 @@ Group members present in lab today:
     Best practice is to not include the first pass in timing, since it may include data loading, caching, etc.* and to report the mean and standard deviation of *k* repetitions. For the purposes of this lab, *k*=10 is reasonable. (If standard deviation is high, you may want to run more repetitions. If it is low, you might be able to get away with fewer repetitions.)
     
     For more information on `timeit` and measuring elapsed time in Python, you may want to refer to [this Stack Overflow post](https://stackoverflow.com/questions/7370801/how-to-measure-elapsed-time-in-python).
-2. Repeat this, but try varying one of: batch size, input size, other. Plot the results (sorry this isn't a notebook):
+2. Repeat this, varying one of: batch size, input size, other. Plot the results (sorry this isn't a notebook):
    ```
    import matplotlib.pyplot as plt
    
@@ -62,11 +62,12 @@ Group members present in lab today:
     sudo apt install powertop
     pip3 install powertop
     ```
-    and/or the `jtop` tool on Jetson (see installation instructions [here](https://github.com/rbonghi/jetson_stats/)). Follow the same procedure as you used to compute latency, but this time compute energy: (avg) watts * time.
+    and/or the `jtop` tool on Jetson (see installation instructions [here](https://github.com/rbonghi/jetson_stats/)). Follow the same procedure as you used to compute latency, but this time compute energy: (avg) watts * time. You will likely need to sample power a number of times throughout each inference, and average.
+2. Any difficulties you encountered here? Why or why not?
 
 5: Discussion
 ----
-1. Analyze the results. Do they support your hypotheses? Why or why not? 
+1. Analyze the results. Do they support your hypotheses? Why or why not? Did you notice any strange or unexpected behavior? What might be the underlying reasons for that behavior?
 
 5: Extra
 ----
