@@ -14,7 +14,7 @@ Group members present in lab today:
 ----
 1. Which models and/or model variants will your group be benchmarking? Please be specific.
 2. Why did you choose these models?
-3. For each model, you will measure parameter count, inference latency, and energy use. For latency and energy, you will also be varying a parameter such as input size or batch size. What are your hypothesis for how the models will compare according to these metrics? Explain.
+3. For each model, you will measure parameter count, inference latency, and energy use. For latency and energy, you will also be varying a parameter such as input size or batch size. What are your hypotheses for how the models will compare according to these metrics? Do you think latency will track with energy use, and parameter count? Explain.
 
 2: Parameter count
 ----
@@ -22,6 +22,7 @@ Group members present in lab today:
    ```
    num_params = sum([np.prod(p.size()) for p in model.parameters()])
    ```
+   Report your results in a table.
 2. Does this number account for any parameter sharing that might be part of the model you're benchmarking? 
 3. Any difficulties you encountered here? Why or why not?
 
@@ -39,7 +40,7 @@ Group members present in lab today:
     Best practice is to not include the first pass in timing, since it may include data loading, caching, etc.* and to report the mean and standard deviation of *k* repetitions. For the purposes of this lab, *k*=10 is reasonable. (If standard deviation is high, you may want to run more repetitions. If it is low, you might be able to get away with fewer repetitions.)
     
     For more information on `timeit` and measuring elapsed time in Python, you may want to refer to [this Stack Overflow post](https://stackoverflow.com/questions/7370801/how-to-measure-elapsed-time-in-python).
-2. Repeat this, but try varying one of: batch size, input size, other. Plot the results (sorry this isn't a notebook):
+2. Repeat this, varying one of: batch size, input size, other. Plot the results (sorry this isn't a notebook):
    ```
    import matplotlib.pyplot as plt
    
@@ -60,13 +61,21 @@ Group members present in lab today:
 1. Compute the energy use of each model. You can use the `powertop` tool on RPi and Jetson (must be run as root):
     ```
     sudo apt install powertop
-    pip3 install powertop
     ```
-    and/or the `jtop` tool on Jetson (see installation instructions [here](https://github.com/rbonghi/jetson_stats/)). Follow the same procedure as you used to compute latency, but this time compute energy: (avg) watts * time.
+    and/or the `jtop` tool on Jetson (see installation instructions [here](https://github.com/rbonghi/jetson_stats/)). 
+    
+    Follow the same procedure as you used to compute latency, but this time compute energy: (avg) watts * time. You will likely need to sample power a number of times throughout each inference, and average.
+    
+    By default, `powertop` takes measurements every 20 seconds. You can change it with the `--time` parameter, which specifies number of seconds and allows for non-integer intervals (0.5 for half a second) e.g. to poll every second for 10 seconds and write to 10 csv files:
+    ```
+    sudo powertop --time=1 --csv=powertop.log --iteration=10
+    ```
+    Here is a link to the [`powertop` users guide](https://01.org/sites/default/files/page/powertop_users_guide_201412.pdf) [PDF].
+2. Any difficulties you encountered here? Why or why not?
 
 5: Discussion
 ----
-1. Analyze the results. Do they support your hypotheses? Why or why not? 
+1. Analyze the results. Do they support your hypotheses? Why or why not? Did you notice any strange or unexpected behavior? What might be the underlying reasons for that behavior?
 
 5: Extra
 ----
