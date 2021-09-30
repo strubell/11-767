@@ -61,9 +61,16 @@ Group members present in lab today:
 1. Compute the energy use of each model. You can use the `powertop` tool on RPi and Jetson (must be run as root):
     ```
     sudo apt install powertop
-    pip3 install powertop
     ```
-    and/or the `jtop` tool on Jetson (see installation instructions [here](https://github.com/rbonghi/jetson_stats/)). Follow the same procedure as you used to compute latency, but this time compute energy: (avg) watts * time. You will likely need to sample power a number of times throughout each inference, and average.
+    and/or the `jtop` tool on Jetson (see installation instructions [here](https://github.com/rbonghi/jetson_stats/)). 
+    
+    Follow the same procedure as you used to compute latency, but this time compute energy: (avg) watts * time. You will likely need to sample power a number of times throughout each inference, and average.
+    
+    By default, `powertop` takes measurements every 20 seconds. You can change it with the `--time` parameter, which specifies number of seconds and allows for non-integer intervals (0.5 for half a second) e.g. to poll every second for 10 seconds and write to 10 csv files:
+    ```
+    sudo powertop --time=1 --csv=powertop.log --iteration=10
+    ```
+    Here is a link to the [`powertop` users guide](https://01.org/sites/default/files/page/powertop_users_guide_201412.pdf) [PDF].
 2. Any difficulties you encountered here? Why or why not?
 
 5: Discussion
