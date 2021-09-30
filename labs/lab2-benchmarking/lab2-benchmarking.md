@@ -14,7 +14,7 @@ Group members present in lab today:
 ----
 1. Which models and/or model variants will your group be benchmarking? Please be specific.
 2. Why did you choose these models?
-3. For each model, you will measure parameter count, inference latency, and energy use. For latency and energy, you will also be varying a parameter such as input size or batch size. What are your hypotheses for how the models will compare according to these metrics? Explain.
+3. For each model, you will measure parameter count, inference latency, and energy use. For latency and energy, you will also be varying a parameter such as input size or batch size. What are your hypotheses for how the models will compare according to these metrics? Do you think latency will track with energy use, and parameter count? Explain.
 
 2: Parameter count
 ----
@@ -22,6 +22,7 @@ Group members present in lab today:
    ```
    num_params = sum([np.prod(p.size()) for p in model.parameters()])
    ```
+   Report your results in a table.
 2. Does this number account for any parameter sharing that might be part of the model you're benchmarking? 
 3. Any difficulties you encountered here? Why or why not?
 
