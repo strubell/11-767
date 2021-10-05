@@ -81,5 +81,3 @@ A few options:
 
 ----
 \* There are exceptions to this rule, where it may be important to include data loading in benchmarking, depending on the specific application and expected use cases. For the purposes of this lab, we want to isolate any data loading from the inference time due to model computation.
-
-
