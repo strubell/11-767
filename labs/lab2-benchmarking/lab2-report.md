@@ -4,54 +4,51 @@ Patrick Fernandes, Jared Fernandez, Haoming Zhang, Hao Zhu
 
 1: Models
 ----
-BERT
-AlBERT
-DistilBERT
-Longformer
-mobilenet_V2
-resnet18
-squeezenet
-vgg16
+* BERT
+* AlBERT
+* DistilBERT
+* Longformer
+* mobilenet_V2
+* resnet18
+* squeezenet
+* vgg16
+
+TODO: make hypothesis. examples: (a) longformer will not consume much more memory/latency per sequence size
 
 2: Parameter count
 ----
-1. Compute the number of parameters in each model. Remember, in Torch you should be able to start with something like this:
-   ```
-   num_params = sum([np.prod(p.size()) for p in model.parameters()])
-   ```
-   Report your results in a table.
-2. Does this number account for any parameter sharing that might be part of the model you're benchmarking? 
-3. Any difficulties you encountered here? Why or why not?
+
+* AlBERT: 11.7M
+* BERT: 109.5M
+* distilBERT: 66.4M
+* longformer: 148.7M
+* mnasnet: 4.4M
+* mobilenet_v2: 3.5M
+* resnet18: 11.7M
+* squeezenet: 1.2M
+
+No difficulties were found when computing total parameters
 
 3: Latency
 ----
-1. Compute the inference latency of each model. You should do this by timing the forward pass only. For example, using `timeit`:
-    ```
-    from timeit import default_timer as timer
 
-    start = timer()
-    # ...
-    end = timer()
-    print(end - start) # Time in seconds, e.g. 5.38091952400282
-    ```
-    Best practice is to not include the first pass in timing, since it may include data loading, caching, etc.* and to report the mean and standard deviation of *k* repetitions. For the purposes of this lab, *k*=10 is reasonable. (If standard deviation is high, you may want to run more repetitions. If it is low, you might be able to get away with fewer repetitions.)
-    
-    For more information on `timeit` and measuring elapsed time in Python, you may want to refer to [this Stack Overflow post](https://stackoverflow.com/questions/7370801/how-to-measure-elapsed-time-in-python).
-2. Repeat this, varying one of: batch size, input size, other. Plot the results (sorry this isn't a notebook):
-   ```
-   import matplotlib.pyplot as plt
-   
-   plot_fname = "plot.png"
-   x = ... # e.g. batch sizes
-   y = ... # mean timings
-   
-   plt.plot(x, y, 'o')
-   plt.xlabel('e.g. batch size')
-   plt.ylabel('efficiency metric')
-   plt.savefig(plot_fname)
-   # or plot.show() if you e.g. copy results to laptop
-   ```
-4. Any difficulties you encountered here? Why or why not?
+Latency while varying image size and batch size for computer vision models is plotted below.
+
+![Latency (s) per Image Size (width)](vision_imgsize.png)
+![Latency (s) per Batch Size (width)](vision_batchsize.png)
+
+
+Latency while varying image size and batch size for natural langugage / transformer models is plotted below. 
+Since Longformer was major outlier, we also plot latency vs batch size without it.
+
+![Latency (s) per Sequence Size](nlp_sequencesize.png)
+![Latency (s) per Batch Size](nlp_batchsize.png)
+![Latency (s) per Batch Size (w/o Longformer)](nlp_batchsize_nolf.png)
+
+The main problem came from the memory requirments for transformer models.
+ We suspect that, for example, the latency of longformer is due to swap usage and we can see that we cannot even run it for batch size > 2. 
+Other transformers run out of space at batch size > 4.
+
 
 4: Energy use
 ----
@@ -72,7 +69,8 @@ vgg16
 
 5: Discussion
 ----
-1. Analyze the results. Do they support your hypotheses? Why or why not? Did you notice any strange or unexpected behavior? What might be the underlying reasons for that behavior?
+
+TODO: discuss hypothesis
 
 5: Extra
 ----
