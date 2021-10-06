@@ -74,10 +74,21 @@ TODO: discuss hypothesis
 
 5: Extra
 ----
-A few options:
-1. Compute FLOPs for each of your models. If you're using Transformer-based models, you might be able to use or modify the [`flops_counter.py`]() script in this directory. If you're using a CNN-based model, then you might be able to use or modify code in [this project](https://github.com/1adrianb/pytorch-estimate-flops) or similar. 
-2. Evaluate on different hardware (for example, you might run the same benchmarking on your laptop.) Compare the results to benchmarking on your device(s).
-3. Use real evaluation data and compare accuracy vs. efficiency. Describe your experimental setup in detail (e.g. did you control for input size? Batch size? Are you reporting average efficiency across all examples in the dev set?) Which model(s) appear to have the best trade-off? Do these results differ from benchmarking with synthetic data? Why or why not?
+
+### Server Data
+
+TODO (add server specs)
+
+Latency while varying image size and batch size for computer vision models is plotted below.
+
+![Latency (s) per Image Size (width)](vision_imgsize_server.png)
+![Latency (s) per Batch Size (width)](vision_batchsize_server.png)
+
+
+Latency while varying image size and batch size for natural langugage / transformer models is plotted below. 
+
+![Latency (s) per Sequence Size](nlp_sequencesize_server.png)
+![Latency (s) per Batch Size](nlp_batchsize_server.png)
 
 ----
 \* There are exceptions to this rule, where it may be important to include data loading in benchmarking, depending on the specific application and expected use cases. For the purposes of this lab, we want to isolate any data loading from the inference time due to model computation.
