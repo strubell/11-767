@@ -24,7 +24,7 @@ Group members present in lab today:
    import torch.quantization
    quantized_model = torch.quantization.quantize_dynamic(model, {torch.nn.Linear}, dtype=torch.qint8)
    ```
-3. Make sure you can use basic quantized models. Dynamic quantization using torchvision is quite straightforward. e.g. you should be able to run the basic [`classify_image.py`](https://github.com/strubell/11-767/blob/main/labs/lab3-quantization/classify_image.py) script included in this directory. If you are having trouble, make sure your version of torch has quantization enabled. This whl should work:
+3. Make sure you can use basic quantized models. Dynamic quantization using torchvision is quite straightforward. e.g. you should be able to run the basic [`classify_image.py`](https://github.com/strubell/11-767/blob/main/labs/lab3-quantization/classify_image.py) script included in this directory, which uses a quantized model. If you are having trouble, make sure your version of torch has quantization enabled. This whl should work:
     ```
     wget herron.lti.cs.cmu.edu/~strubell/11-767/torch-1.8.0-cp36-cp36m-linux_aarch64.whl
     pip3 install torch-1.8.0-cp36-cp36m-linux_aarch64.whl
