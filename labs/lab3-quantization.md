@@ -18,13 +18,20 @@ Group members present in lab today:
 
 2: Quantization in PyTorch
 ----
-1. [Here is the official documentation for Torch quantization](https://pytorch.org/docs/stable/quantization.html). 
+1. [Here is the official documentation for Torch quantization](https://pytorch.org/docs/stable/quantization.html) and an [official blog post](https://pytorch.org/blog/introduction-to-quantization-on-pytorch/) about the functionality. Today we'll be focusing on what the PyTorch documentation refers to as  **dynamic** quantization (experimenting with **static** quantization and **quantization-aware training (QAT)** is an option for extra credit if you wish). 
+2. In **dynamic** PyTorch quantization, weights are converted to `int8`, and activations are converted as well before performing computations, so that those computations can be performed using faster `int8` operations. Accumulators are not quantized. is You can acitvate dynamic quantization to `int8` for a model in PyTorch as follows: 
+   ```
+   import torch.quantization
+   quantized_model = torch.quantization.quantize_dynamic(model, {torch.nn.Linear}, dtype=torch.qint8)
+   ```
+Try to use this to quantize your models. If you're feeling lost and/or you're unable to get this to work on your model [here is a tutorial on using dynamic quantization on a fine-tuned BERT](https://pytorch.org/tutorials/intermediate/dynamic_quantization_bert_tutorial.html) and [here is one quantizing an LSTM language model](https://pytorch.org/tutorials/advanced/dynamic_quantization_tutorial.html). 
 
 3: Model size
 ----
 1. Compute the size of each model. Given the path to your model on disk, you can compute its size at the command line, e.g.:
    ```
-   
+   import torch.quantization
+quantized_model = torch.quantization.quantize_dynamic(model, {torch.nn.Linear}, dtype=torch.qint8)
    ```
 2. Any difficulties you encountered here? Why or why not?
 
@@ -69,6 +76,7 @@ A few options:
 1. Compute FLOPs and/or energy use (if your device has the necessary power monitoring hardware) for your models. 
 2. Evaluate on different hardware (for example, you might run the same benchmarking on your laptop.) Compare the results to benchmarking on your device(s).
 3. Use real evaluation data and compare accuracy vs. efficiency. Describe your experimental setup in detail (e.g. did you control for input size? Batch size? Are you reporting average efficiency across all examples in the dev set?) Which model(s) appear to have the best trade-off? Do these results differ from benchmarking with synthetic data? Why or why not?
+4. Try to run static quantization, or quantization aware training (QAT). Benchmark and report your results. 
 
 ----
 \* There are exceptions to this rule, where it may be important to include data loading in benchmarking, depending on the specific application and expected use cases. For the purposes of this lab, we want to isolate any data loading from the inference time due to model computation.
