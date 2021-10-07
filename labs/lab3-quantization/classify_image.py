@@ -14,7 +14,7 @@ transform = transforms.Compose([transforms.Resize(255),
 normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                  std=[0.229, 0.224, 0.225])
 
-image = Image.open("output.jpg").convert('RGB')
+image = Image.open("image.jpg").convert('RGB')
 image = transform(image)
 image = normalize(image)
 image = image.unsqueeze(0)
