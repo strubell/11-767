@@ -67,7 +67,7 @@ Other transformers run out of space at batch size > 4.
 
 ### Server Data
 
-TODO (add server specs)
+For comparison against high-performance systems we ran the same benchmarks on a deep learning server with an Intel Xeon W-2295 CPU and an Nvidia RTX-8000 GPU (48 GB VRAM) with 128 GB of RAM.
 
 Latency while varying image size and batch size for computer vision models is plotted below.
 
