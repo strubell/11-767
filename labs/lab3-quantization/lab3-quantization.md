@@ -24,12 +24,12 @@ Group members present in lab today:
    import torch.quantization
    quantized_model = torch.quantization.quantize_dynamic(model, {torch.nn.Linear}, dtype=torch.qint8)
    ```
-3. Make sure you can use basic quantized models. Dynamic quantization using torchvision is quite straightforward. e.g. you should be able to run the basic [`classify_image.py`](https://github.com/strubell/11-767/blob/main/labs/lab3-quantization/classify_image.py) script included in this directory, which uses a quantized model (`mobilenet-v2`). If you are having trouble, make sure your version of torch has quantization enabled. This whl should work:
+3. Make sure you can use basic quantized models. Dynamic quantization using torchvision is quite straightforward. e.g. you should be able to run the basic [`classify_image.py`](https://github.com/strubell/11-767/blob/main/labs/lab3-quantization/classify_image.py) script included in this directory, which uses a quantized model (`mobilenet_v2`). If you are having trouble, make sure your version of torch has quantization enabled. This whl should work:
     ```
     wget herron.lti.cs.cmu.edu/~strubell/11-767/torch-1.8.0-cp36-cp36m-linux_aarch64.whl
     pip3 install torch-1.8.0-cp36-cp36m-linux_aarch64.whl
     ```
-4. Try changing the model to `mobilenet_v3_large` and set `quantize=False`. What happens?
+4. Try changing the model to `mobilenet_v3_large` and set `quantize=False`. (Note that `quantize=True` may fail due to unsupported operations.) What happens?
 5. Try to use this to quantize your models. If you're feeling lost and/or you're unable to get this to work on your model [here is a tutorial on using dynamic quantization on a fine-tuned BERT](https://pytorch.org/tutorials/intermediate/dynamic_quantization_bert_tutorial.html) and [here is one quantizing an LSTM language model](https://pytorch.org/tutorials/advanced/dynamic_quantization_tutorial.html). 
 6. Any difficulties you encountered here? Why or why not?
 
