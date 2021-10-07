@@ -13,7 +13,11 @@ Patrick Fernandes, Jared Fernandez, Haoming Zhang, Hao Zhu
 * squeezenet
 * vgg16
 
-TODO: make hypothesis. examples: (a) longformer will not consume much more memory/latency per sequence size
+Based on the model properties, we made the following hypothesis
+
+ 1. We assume that for both vision and language models, the latency for each batch is proportional to the batch size.
+ 2. We assume that for vision models, the latency for each batch is proportional to number of pixels for each image, i.e., proportional to square of batch size.
+ 3. We assume that for transformers models, the latency for each batch is proportional to sequence lengths, except the Longformer, whose latency will be constant with varying sequence lengths according to its paper. 
 
 2: Parameter count
 ----
@@ -50,34 +54,9 @@ The main problem came from the memory requirments for transformer models.
 Other transformers run out of space at batch size > 4.
 
 
-4: Energy use
-----
-1. Compute the energy use of each model. You can use the `powertop` tool on RPi and Jetson (must be run as root):
-    ```
-    sudo apt install powertop
-    ```
-    and/or the `jtop` tool on Jetson (see installation instructions [here](https://github.com/rbonghi/jetson_stats/)). 
-    
-    Follow the same procedure as you used to compute latency, but this time compute energy: (avg) watts * time. You will likely need to sample power a number of times throughout each inference, and average.
-    
-    By default, `powertop` takes measurements every 20 seconds. You can change it with the `--time` parameter, which specifies number of seconds and allows for non-integer intervals (0.5 for half a second) e.g. to poll every second for 10 seconds and write to 10 csv files:
-    ```
-    sudo powertop --time=1 --csv=powertop.log --iteration=10
-    ```
-    Here is a link to the [`powertop` users guide](https://01.org/sites/default/files/page/powertop_users_guide_201412.pdf) [PDF].
-2. Any difficulties you encountered here? Why or why not?
-
-5: Discussion
+4: Discussion
 ----
 
-TODO: discuss hypothesis
-
-Hypothses: 
- 1. We assume that for both vision and language models, the latency for each batch is proportional to the batch size.
- 2. We assume that for vision models, the latency for each batch is proportional to number of pixels for each image, i.e., proportional to square of batch size.
- 3. We assume that for transformers models, the latency for each batch is proportional to sequence lengths, except the Longformer, whose latency will be constant with varying sequence lengths according to its paper. 
-
- Discussion:
  * The results from section 3 are consistent with hypothesis 2 and 3. 
  * For hypothesis 1, the results for vision models align with our hypothesis. However, the latency for AlBERT, BERT and DistillBERT seems to be constant with varying batch sizes. One possible explanation could be that there are some other bottlenecks during the computations with takes longer time than matrix multiplications since our devices can only support relatively small batch size. To verify our assumption, we will run the experiments on GPU servers with larger batch sizes in next section. 
 
@@ -99,5 +78,5 @@ Latency while varying image size and batch size for natural langugage / transfor
 ![Latency (s) per Sequence Size](nlp_sequencesize_server.png)
 ![Latency (s) per Batch Size](nlp_batchsize_server.png)
 
-----
-\* There are exceptions to this rule, where it may be important to include data loading in benchmarking, depending on the specific application and expected use cases. For the purposes of this lab, we want to isolate any data loading from the inference time due to model computation.
+We can see that results on the server are mostly the same as for the Jetson.
+This includes the constant latency per batch size. This again hints that there is a bottleneck that isn't more expensive even when the batch size is bigger.
