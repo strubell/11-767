@@ -19,6 +19,7 @@ Based on the model properties, we made the following hypothesis
  2. We assume that for vision models, the latency for each batch is proportional to number of pixels for each image, i.e., proportional to square of batch size.
  3. We assume that for transformers models, the latency for each batch is proportional to sequence lengths, except the Longformer, whose latency will be constant with varying sequence lengths according to its paper. 
 
+
 2: Parameter count
 ----
 
@@ -59,6 +60,7 @@ Other transformers run out of space at batch size > 4.
 
  * The results from section 3 are consistent with hypothesis 2 and 3. 
  * For hypothesis 1, the results for vision models align with our hypothesis. However, the latency for AlBERT, BERT and DistillBERT seems to be constant with varying batch sizes. One possible explanation could be that there are some other bottlenecks during the computations with takes longer time than matrix multiplications since our devices can only support relatively small batch size. To verify our assumption, we will run the experiments on GPU servers with larger batch sizes in next section. 
+
 
 5: Extra
 ----
