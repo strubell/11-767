@@ -82,3 +82,6 @@ Latency while varying image size and batch size for natural langugage / transfor
 
 We can see that results on the server are mostly the same as for the Jetson.
 This includes the constant latency per batch size. This again hints that there is a bottleneck that isn't more expensive even when the batch size is bigger.
+
+One exception is that it seems that now the latency doesn't scale with image size as much as with in Jetson. This might be due the the more recent/powerful GPUs being able to better parallelize across the batch dimension for the vision models.
+
