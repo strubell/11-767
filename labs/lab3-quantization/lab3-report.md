@@ -6,14 +6,15 @@ Patrick Fernandes, Jared Fernandez, Haoming Zhang, Hao ZhuGroup name:
 
 1: Models
 ----
-* BERT: Bit Width, Precision, Quantitization
-* AlBERT
-* DistilBERT
-* Longformer
-* mobilenet_V2
-* resnet18
-* squeezenet
-* vgg16
+model: original precision, orginal model size, target precision
+* BERT: float32, 418M, int8
+* AlBERT: float32, 45M, int8
+* DistilBERT: float32, 254M, int8
+* Longformer: float32, 568M, int8
+* mobilenet_V2: float32, 14M, int8
+* resnet18: float32, 45M, int8
+* squeezenet: float32, 4.8M, int8
+* vgg16: float32, 528M, int8
 
 1. Which models and/or model variants will your group be studying in this lab? What is the original bit width of the models, and what precision will you be quantizing to? What parts of the model will be quantized (e.g. parameters, activations, ...)? Please be specific.
 2. Why did you choose these models?
