@@ -15,6 +15,13 @@ Patrick Fernandes, Jared Fernandez, Haoming Zhang, Hao Zhu
 
 TODO: make hypothesis. examples: (a) longformer will not consume much more memory/latency per sequence size
 
+
+Hypotheses:
+
+1. We assume that for both vision and language models, the latency for each batch is proportional to the batch size.
+2. We assume that for vision models, the latency for each batch is proportional to the number of pixels for each image, i.e., proportional to the square of batch size.
+3. We assume that for transformers models, the latency for each batch is proportional to sequence lengths, except the Longformer, whose latency will be constant with varying sequence lengths according to its paper.
+
 2: Parameter count
 ----
 
@@ -69,14 +76,6 @@ Other transformers run out of space at batch size > 4.
 
 5: Discussion
 ----
-
-TODO: discuss hypothesis
-
-Hypotheses:
-
-1. We assume that for both vision and language models, the latency for each batch is proportional to the batch size.
-2. We assume that for vision models, the latency for each batch is proportional to the number of pixels for each image, i.e., proportional to the square of batch size.
-3. We assume that for transformers models, the latency for each batch is proportional to sequence lengths, except the Longformer, whose latency will be constant with varying sequence lengths according to its paper.
 
 Discussion:
 
