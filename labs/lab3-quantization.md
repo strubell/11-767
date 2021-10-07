@@ -24,13 +24,13 @@ Group members present in lab today:
    import torch.quantization
    quantized_model = torch.quantization.quantize_dynamic(model, {torch.nn.Linear}, dtype=torch.qint8)
    ```
-2.5. Are you having trouble running quantization? Make sure your version of torch has quantization enabled. This whl should work:
+3. Are you having trouble running quantization? Make sure your version of torch has quantization enabled. This whl should work:
     ```
     wget herron.lti.cs.cmu.edu/~strubell/11-767/torch-1.8.0-cp36-cp36m-linux_aarch64.whl
     pip3 install torch-1.8.0-cp36-cp36m-linux_aarch64.whl
     ```
-3. Try to use this to quantize your models. If you're feeling lost and/or you're unable to get this to work on your model [here is a tutorial on using dynamic quantization on a fine-tuned BERT](https://pytorch.org/tutorials/intermediate/dynamic_quantization_bert_tutorial.html) and [here is one quantizing an LSTM language model](https://pytorch.org/tutorials/advanced/dynamic_quantization_tutorial.html). 
-4. Any difficulties you encountered here? Why or why not?
+4. Try to use this to quantize your models. If you're feeling lost and/or you're unable to get this to work on your model [here is a tutorial on using dynamic quantization on a fine-tuned BERT](https://pytorch.org/tutorials/intermediate/dynamic_quantization_bert_tutorial.html) and [here is one quantizing an LSTM language model](https://pytorch.org/tutorials/advanced/dynamic_quantization_tutorial.html). 
+5. Any difficulties you encountered here? Why or why not?
 
 3: Model size
 ----
