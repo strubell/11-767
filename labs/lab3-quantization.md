@@ -30,8 +30,7 @@ Try to use this to quantize your models. If you're feeling lost and/or you're un
 ----
 1. Compute the size of each model. Given the path to your model on disk, you can compute its size at the command line, e.g.:
    ```
-   import torch.quantization
-quantized_model = torch.quantization.quantize_dynamic(model, {torch.nn.Linear}, dtype=torch.qint8)
+   du -h <path-to-serialized-model>
    ```
 2. Any difficulties you encountered here? Why or why not?
 
