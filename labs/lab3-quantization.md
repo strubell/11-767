@@ -1,8 +1,8 @@
 Lab 3: Quantization
 ===
-The goal of this lab is for you to benchmark and compare model inference efficiency on your devices. **You should benchmark 2*N* models or model variants, where *N* is the size of your group (so, two models per person.)** For now, if you don't have appropriate evaluation data in place that's fine; you can provide pretend data to the model for now and just evaluate efficiency.
+The goal of this lab is for you to benchmark and compare model inference efficiency **between quantized and original models** on your devices. You should benchmark the same models as you benchmarked last lab, so ideally **2*N* models or model variants, where *N* is the size of your group (so, two models per person.)** For now, if you don't have appropriate evaluation data in place that's fine; you can provide pretend data to the model for now and just evaluate efficiency.
 
-Ideally, the models you benchmark will be related to and useful for your class project, but at the very least the efficiency metrics should be useful.
+Ideally, the models you benchmark will be the same as last class, but if you find that you're unable to run out-of-the-box quantization on your models, feel free to try quantizing other models, or a subset. Just be sure to explain what you tried, and why.
 
 Include any code you write to perform this benchmarking in your Canvas submission (either as a link to a folder on github, in a shared drive, zip, etc).
 
@@ -12,13 +12,13 @@ Group members present in lab today:
 
 1: Models
 ----
-1. Which models and/or model variants will your group be studying in this lab? Please be specific.
+1. Which models and/or model variants will your group be studying in this lab? What is the original bit width of the models, and what precision will you be quantizing to? What parts of the model will be quantized (e.g. parameters, activations, ...)? Please be specific.
 2. Why did you choose these models?
 3. For each model, you will measure model size (in (mega,giga,...)bytes), and inference latency. You will also be varying a parameter such as input size or batch size. What are your hypotheses for how the quantized models will compare to non-quantized models according to these metrics? Do you think latency will track with model size? Explain.
 
 2: Quantization in PyTorch
 ----
-1. 
+1. [Here is the official documentation for Torch quantization](https://pytorch.org/docs/stable/quantization.html). 
 
 3: Model size
 ----
