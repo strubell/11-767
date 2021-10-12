@@ -6,86 +6,77 @@ Patrick Fernandes, Jared Fernandez, Haoming Zhang, Hao ZhuGroup name:
 
 1: Models
 ----
-* BERT: Bit Width, Precision, Quantitization
-* AlBERT
-* DistilBERT
-* Longformer
-* mobilenet_V2
-* resnet18
-* squeezenet
-* vgg16
 
-1. Which models and/or model variants will your group be studying in this lab? What is the original bit width of the models, and what precision will you be quantizing to? What parts of the model will be quantized (e.g. parameters, activations, ...)? Please be specific.
-2. Why did you choose these models?
-3. For each model, you will measure model size (in (mega,giga,...)bytes), and inference latency. You will also be varying a parameter such as input size or batch size. What are your hypotheses for how the quantized models will compare to non-quantized models according to these metrics? Do you think latency will track with model size? Explain.
+**TODO**: Add quantitized parts
+
+* BERT: fp32, qint8, TODO
+* AlBERT: fp32, qint8, TODO
+* DistilBERT: fp32, qint8, TODO
+* Longformer: fp32, qint8, TODO
+* mobilenet_V2: fp32, qint8, TODO
+* resnet18: fp32, qint8, TODO
+* squeezenet: fp32, qint8, TODO
+
+We chose the same models as the previous lab. 
+
+**TODO**: Hypothesis for models
 
 2: Quantization in PyTorch
 ----
-1. [Here is the official documentation for Torch quantization](https://pytorch.org/docs/stable/quantization.html) and an [official blog post](https://pytorch.org/blog/introduction-to-quantization-on-pytorch/) about the functionality. Today we'll be focusing on what the PyTorch documentation refers to as  **dynamic** quantization (experimenting with **static** quantization and **quantization-aware training (QAT)** is an option for extra credit if you wish). 
-2. In **dynamic** PyTorch quantization, weights are converted to `int8`, and activations are converted as well before performing computations, so that those computations can be performed using faster `int8` operations. Accumulators are not quantized, and the scaling factors are computed on-the-fly (in **static** quantization, scaling factors are computed using a representative dataset, and remain quantized in accumulators). You can acitvate dynamic quantization to `int8` for a model in PyTorch as follows: 
-   ```
-   import torch.quantization
-   quantized_model = torch.quantization.quantize_dynamic(model, {torch.nn.Linear}, dtype=torch.qint8)
-   ```
-3. Make sure you can use basic quantized models. Dynamic quantization using torchvision is quite straightforward. e.g. you should be able to run the basic [`classify_image.py`](https://github.com/strubell/11-767/blob/main/labs/lab3-quantization/classify_image.py) script included in this directory, which uses a quantized model (`mobilenet_v2`). If you are having trouble, make sure your version of torch has quantization enabled. This whl should work:
-    ```
-    wget herron.lti.cs.cmu.edu/~strubell/11-767/torch-1.8.0-cp36-cp36m-linux_aarch64.whl
-    pip3 install torch-1.8.0-cp36-cp36m-linux_aarch64.whl
-    ```
-4. Try changing the model to `mobilenet_v3_large` and set `quantize=False`. (Note that `quantize=True` may fail due to unsupported operations.) What happens?
-5. Try to use this to quantize your models. If you're feeling lost and/or you're unable to get this to work on your model [here is a tutorial on using dynamic quantization on a fine-tuned BERT](https://pytorch.org/tutorials/intermediate/dynamic_quantization_bert_tutorial.html) and [here is one quantizing an LSTM language model](https://pytorch.org/tutorials/advanced/dynamic_quantization_tutorial.html). 
-6. Any difficulties you encountered here? Why or why not?
+
+We had some problems with the the QNNPack not being included in the wheel we were using. Reinstalling PyTorch with the wheel provided solved it
 
 3: Model size
 ----
-1. Compute the size of each model. Given the path to your model on disk, you can compute its size at the command line, e.g.:
-   ```
-   du -h <path-to-serialized-model>
-   ```
-2. Any difficulties you encountered here? Why or why not?
+
+**TODO**: Add checkpoint size for all models
 
 4: Latency
 ----
-1. Compute the inference latency of each model. You can use the same procedure here as you used in the last lab. Here's a reminder of what we did last time: 
-   You should measure latency by timing the forward pass only. For example, using `timeit`:
-    ```
-    from timeit import default_timer as timer
+Latency while varying image size and batch size for computer vision models is plotted below.
 
-    start = timer()
-    # ...
-    end = timer()
-    print(end - start) # Time in seconds, e.g. 5.38091952400282
-    ```
-    Best practice is to not include the first pass in timing, since it may include data loading, caching, etc.* and to report the mean and standard deviation of *k* repetitions. For the purposes of this lab, *k*=10 is reasonable. (If standard deviation is high, you may want to run more repetitions. If it is low, you might be able to get away with fewer repetitions.)
-    
-    For more information on `timeit` and measuring elapsed time in Python, you may want to refer to [this Stack Overflow post](https://stackoverflow.com/questions/7370801/how-to-measure-elapsed-time-in-python).
-2. Repeat this, varying one of: batch size, input size, other. Plot the results (sorry this isn't a notebook):
-   ```
-   import matplotlib.pyplot as plt
-   
-   plot_fname = "plot.png"
-   x = ... # e.g. batch sizes
-   y = ... # mean timings
-   
-   plt.plot(x, y, 'o')
-   plt.xlabel('e.g. batch size')
-   plt.ylabel('efficiency metric')
-   plt.savefig(plot_fname)
-   # or plot.show() if you e.g. copy results to laptop
-   ```
-4. Any difficulties you encountered here? Why or why not?
+![Latency (s) per Image Size (width)](jetson_vision_imgsize.png)
+![Latency (s) per Batch Size (width)](jetson_vision_batchsize.png)
+
+
+Latency while varying image size and batch size for natural langugage / transformer models is plotted below. 
+Since Longformer was major outlier, we also plot latency vs batch size without it.
+
+![Latency (s) per Sequence Size](jetson_language_seql.png)
+![Latency (s) per Batch Size](jetson_language_batchsize.png)
+
+Initially we were suprised by the fact that quantized models were *slower* than the original model. 
+However after realizing that quantized models run on the CPU, this made sense.
+We then recomputed the values for the originial models *on the CPU* to compare (see plots below), and here we see the expected behaviour.
+
 
 5: Discussion
 ----
-1. Analyze the results. Do they support your hypotheses? Why or why not? Did you notice any strange or unexpected behavior? What might be the underlying reasons for that behavior?
+
+**TODO** Add discussion
+
 
 5: Extra
 ----
-A few options:
-1. Try to run static quantization, or quantization aware training (QAT). Benchmark and report your results. Here is a nice blog post on [using static quantization on Torchvision models](https://leimao.github.io/blog/PyTorch-Static-Quantization/) in PyTorch.
-2. Compute FLOPs and/or energy use (if your device has the necessary power monitoring hardware) for your models. 
-3. Evaluate on different hardware (for example, you might run the same benchmarking on your laptop.) Compare the results to benchmarking on your device(s).
-4. Use real evaluation data and compare accuracy vs. efficiency. Describe your experimental setup in detail (e.g. did you control for input size? Batch size? Are you reporting average efficiency across all examples in the dev set?) Which model(s) appear to have the best trade-off? Do these results differ from benchmarking with synthetic data? Why or why not?
 
-----
-\* There are exceptions to this rule, where it may be important to include data loading in benchmarking, depending on the specific application and expected use cases. For the purposes of this lab, we want to isolate any data loading from the inference time due to model computation.
+### Static Quantization
+
+**TODO**: Get this implemented in Jareds framework
+
+### Server Data
+
+For comparison against high-performance systems we ran the same benchmarks using quantized models on a deep learning server with an Intel Xeon W-2295 CPU and an Nvidia RTX-8000 GPU (48 GB VRAM) with 128 GB of RAM.
+
+Latency while varying image size and batch size for computer vision models is plotted below.
+
+![Latency (s) per Image Size (width)](server_vision_imgsize.png)
+![Latency (s) per Batch Size (width)](server_vision_batchsize.png)
+
+
+Latency while varying image size and batch size for natural langugage / transformer models is plotted below. 
+
+![Latency (s) per Sequence Size](server_language_seql.png)
+![Latency (s) per Batch Size](server_language_batchsize.png)
+
+We can see that results on the server are mostly the same as for the Jetson. **TODO**: Elaborate
+
