@@ -4,32 +4,28 @@ NoName:
 ---
 Patrick Fernandes, Jared Fernandez, Haoming Zhang, Hao ZhuGroup name:
 
-1: Models
+1: Models & Model Size
 ----
 
-**TODO**: Add quantitized parts
+**TODO**: Add parts quantitized in each model
 
-* BERT: fp32, qint8, TODO
-* AlBERT: fp32, qint8, TODO
-* DistilBERT: fp32, qint8, TODO
-* Longformer: fp32, qint8, TODO
-* mobilenet_V2: fp32, qint8, TODO
-* resnet18: fp32, qint8, TODO
-* squeezenet: fp32, qint8, TODO
+model: original precision, orginal model size, target precision, parts quantitized
 
-We chose the same models as the previous lab. 
+* BERT: float32, 418M, int8, TODO
+* AlBERT: float32, 45M, int8, TODO
+* DistilBERT: float32, 254M, int8, TODO
+* Longformer: float32, 568M, int8, TODO
+* mobilenet_V2: float32, 14M, int8, TODO
+* resnet18: float32, 45M, int8, TODO
+* squeezenet: float32, 4.8M, int8, TODO
+* vgg16: float32, 528M, int8, TODO
 
-**TODO**: Hypothesis for models
 
 2: Quantization in PyTorch
 ----
 
 We had some problems with the the QNNPack not being included in the wheel we were using. Reinstalling PyTorch with the wheel provided solved it
 
-3: Model size
-----
-
-**TODO**: Add checkpoint size for all models
 
 4: Latency
 ----
