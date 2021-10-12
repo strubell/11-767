@@ -11,21 +11,24 @@ Patrick Fernandes, Jared Fernandez, Haoming Zhang, Hao ZhuGroup name:
 
 model: original precision, orginal model size, target precision, parts quantitized
 
-* BERT: float32, 418M, int8, TODO
-* AlBERT: float32, 45M, int8, TODO
-* DistilBERT: float32, 254M, int8, TODO
-* Longformer: float32, 568M, int8, TODO
-* mobilenet_V2: float32, 14M, int8, TODO
-* resnet18: float32, 45M, int8, TODO
-* squeezenet: float32, 4.8M, int8, TODO
-* mnasnet: float32, TODO, int8, TODO
+* BERT: float32, 418M, int8, [Self-Attention Layers, Fully Connected Layers] 
+* AlBERT: float32, 45M, int8,  [Self-Attention Layers, Fully Connected Layers] 
+* DistilBERT: float32, 254M, int8,  [Self-Attention Layers, Fully Connected Layers] 
+* Longformer: float32, 568M, int8,  [Self-Attention Layers, Fully Connected Layers] 
+* mobilenet_V2: float32, 14M, int8, [Conv2D, Fully Connected Layers]
+* resnet18: float32, 45M, int8, [Fully Connected Layers]
+* squeezenet: float32, 4.8M, int8, [Fully Connected Layers]
+* mnasnet: float32, TODO, int8, [Fully Connected Layers]
 
 **TODO**: Add hypothesis
 
 2: Quantization in PyTorch
 ----
 
-We had some problems with the the QNNPack not being included in the wheel we were using. Reinstalling PyTorch with the wheel provided solved it
+We had some problems with the the QNNPack not being included in the wheel we were using. Reinstalling PyTorch with the wheel provided solved it. For the transformer language models, dynamic quantization was applied without any additional problems. Quantization was applied to all self-attention and fully connected layers -- because the self-attention heads are implemented as linear layers within the HuggingFace library.  
+
+Furthermore, we were unable to use the torchvision quantized models for all image models as only MobileNetv2 was quantized using QNNPack, other models were quantized using FBGEMM which our torch installation was not built with.
+As a result, the quantization for the remaining vision models as only applied to the final fully connected layer. This still provided substantial savings in memory footprint because the linear layer contained the largest number of parameters.  
 
 
 3: Latency
@@ -62,7 +65,7 @@ We then recomputed the values for the originial models *on the CPU* to compare (
 
 ### Server Data
 
-For comparison against high-performance systems we ran the same benchmarks using quantized models on a deep learning server with an Intel Xeon W-2295 CPU and an Nvidia RTX-8000 GPU (48 GB VRAM) with 128 GB of RAM.
+For comparison against high-performance systems we ran the same benchmarks using quantized models on a deep learning server with an Intel Xeon W-2295 CPU and with 128 GB of RAM.
 
 Latency while varying image size and batch size for computer vision models is plotted below.
 
