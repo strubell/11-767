@@ -20,6 +20,7 @@ model: original precision, orginal model size, target precision, parts quantitiz
 * squeezenet: float32, 4.8M, int8, TODO
 * vgg16: float32, 528M, int8, TODO
 
+**TODO**: Add hypothesis
 
 2: Quantization in PyTorch
 ----
@@ -27,7 +28,7 @@ model: original precision, orginal model size, target precision, parts quantitiz
 We had some problems with the the QNNPack not being included in the wheel we were using. Reinstalling PyTorch with the wheel provided solved it
 
 
-4: Latency
+3: Latency
 ----
 Latency while varying image size and batch size for computer vision models is plotted below.
 
@@ -46,7 +47,7 @@ However after realizing that quantized models run on the CPU, this made sense.
 We then recomputed the values for the originial models *on the CPU* to compare (see plots below), and here we see the expected behaviour.
 
 
-5: Discussion
+4: Discussion
 ----
 
 **TODO** Add discussion
