@@ -18,7 +18,7 @@ model: original precision, orginal model size, target precision, parts quantitiz
 * mobilenet_V2: float32, 14M, int8, TODO
 * resnet18: float32, 45M, int8, TODO
 * squeezenet: float32, 4.8M, int8, TODO
-* vgg16: float32, 528M, int8, TODO
+* mnasnet: float32, TODO, int8, TODO
 
 **TODO**: Add hypothesis
 
