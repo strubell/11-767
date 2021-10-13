@@ -31,6 +31,7 @@ Furthermore, we were unable to use the torchvision quantized models for all imag
 As a result, the quantization for the remaining vision models as only applied to the final fully connected layer. This still provided substantial savings in memory footprint because the linear layer contained the largest number of parameters.  
 
 3: Model Size
+----
 * BERT: 174M
 * AlBERT: 23M
 * DistilBERT: 132M 
