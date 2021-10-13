@@ -18,7 +18,7 @@ model: original precision, orginal model size, target precision, parts quantitiz
 * mobilenet_V2: float32, 14M, int8, [Conv2D, Fully Connected Layers]
 * resnet18: float32, 45M, int8, [Fully Connected Layers]
 * squeezenet: float32, 4.8M, int8, [Fully Connected Layers]
-* mnasnet: float32, TODO, int8, [Fully Connected Layers]
+* mnasnet: float32, 17M, int8, [Fully Connected Layers]
 
 **TODO**: Add hypothesis
 
@@ -30,8 +30,17 @@ We had some problems with the the QNNPack not being included in the wheel we wer
 Furthermore, we were unable to use the torchvision quantized models for all image models as only MobileNetv2 was quantized using QNNPack, other models were quantized using FBGEMM which our torch installation was not built with.
 As a result, the quantization for the remaining vision models as only applied to the final fully connected layer. This still provided substantial savings in memory footprint because the linear layer contained the largest number of parameters.  
 
+3: Model Size
+* BERT: 174M
+* AlBERT: 23M
+* DistilBERT: 132M 
+* Longformer: 262M
+* mobilenet_V2: 10M
+* resnet18: 44M
+* squeezenet: 4.8M
+* mnasnet: 14M
 
-3: Latency
+4: Latency
 ----
 Latency while varying image size and batch size for computer vision models is plotted below.
 
@@ -50,13 +59,13 @@ However after realizing that quantized models run on the CPU, this made sense.
 We then recomputed the values for the originial models *on the CPU* to compare (see plots below), and here we see the expected behaviour.
 
 
-4: Discussion
+5: Discussion
 ----
 
 **TODO** Add discussion
 
 
-5: Extra
+6: Extra
 ----
 
 ### Static Quantization
