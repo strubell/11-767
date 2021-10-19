@@ -7,6 +7,8 @@ Tuesday, September 7
 - [Machine Learning at Facebook: Understanding Inference at the Edge](https://research.fb.com/wp-content/uploads/2018/12/Machine-Learning-at-Facebook-Understanding-Inference-at-the-Edge.pdf)
 - [Recognizing People in Photos Through Private On-Device Machine Learning](https://machinelearning.apple.com/research/recognizing-people-photos)
 - [Knowledge Transfer for Efficient On-device False Trigger Mitigation](https://arxiv.org/abs/2010.10591)
+- [Smart Reply: Automated Response Suggestion for Email](https://arxiv.org/abs/1606.04870)
+- [Chat Smarter with Allo](https://ai.googleblog.com/2016/05/chat-smarter-with-allo.html)
 
 Tuesday, September 14
 ----
