@@ -26,3 +26,13 @@ Group members present in lab today:
 ----
 More related work, more baselines, more implementation, more analysis. Work on your project.
 
+
+FAQ
+----
+1. Our baseline is the SotA model from XXX 2021 which doesn't fit on device.  
+
+Yikes! I think you meant to say -- "We used some very minimal off the shelf components from torchvision/huggingface/... to ensure our basic pipeline can run"
+
+2. We're evaluating our baseline on accuracy only
+
+I think you meant to say -- "We plan to plot accuracy against XXXX to see how compute and performance trade-off. Specifically, we can shrink our baseline by doing YYYY"
