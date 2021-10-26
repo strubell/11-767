@@ -98,6 +98,7 @@ Tuesday, October 19
 - [A Study of Non-autoregressive Model for Sequence Generation](https://arxiv.org/abs/2004.10454)
 - [Mask-Predict: Parallel Decoding of Conditional Masked Language Models](https://arxiv.org/abs/1904.09324)
 - [Non-autoregressive neural machine translation](https://arxiv.org/abs/1711.02281)
+- [Deep Encoder, Shallow Decoder: Reevaluating Non-autoregressive Machine Translation](https://arxiv.org/abs/2006.10369)
 
 
 
