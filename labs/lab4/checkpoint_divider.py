@@ -1,6 +1,6 @@
 from collections import defaultdict
 from typing import List
-
+import os
 
 def first_number_in_string(string: List[str]) -> int:
     """
@@ -50,10 +50,14 @@ def divide_checkpoint(ckpt_path: str, save_path: str):
     :param save_path: path to the directory where the divided checkpoints will be saved
     """
     import torch
+    if not os.path.exists(save_path):
+        os.mkdir(save_path)
+
     ckpt = torch.load(ckpt_path)
     keys = list(map(lambda x: x.split("."), sorted(list(ckpt.keys()))))
     layers = divide_keys(keys)
     layer2keys = defaultdict(list)
+
     for key, layer in zip(keys, layers):
         layer2keys[layer].append('.'.join(key))
     for layer in layer2keys:
