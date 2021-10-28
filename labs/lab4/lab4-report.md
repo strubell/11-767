@@ -10,13 +10,13 @@ Patrick Fernandes, Jared Fernandez, Haoming Zhang, Hao Zhu
 
 - [BERT](https://arxiv.org/pdf/1810.04805.pdf)
 
-BERT is a pretrained Transformers language model that learns bidirectional representations from unlabeled text by jointly conidtioning on both left and right context in all layers. It is pretrained on  13 GB text data with a combination of masked LM loss and next sentense prediction loss. The pretrained BERT can be finetuned with one additional output layer for various of downstream task. BERT is evaluated on benchmark datasets, including GLUE and SQuAD, and achieves state-of-the-art performances at the time. 
+BERT is a pretrained Transformers language model that learns bidirectional representations from unlabeled text by jointly conidtioning on both left and right context in all layers. It is pretrained on  13 GB text data with a combination of masked LM loss and next sentense prediction loss. The pretrained BERT can be finetuned with one additional output layer for various of downstream tasks. BERT is evaluated on benchmark datasets, including GLUE and SQuAD, and achieves state-of-the-art performances at the time. 
 
-As a lot of works later than BERT, our project aims to build upon BERT and improve the performance of BERT on resource limited devices, such as Jetson Nano. From our preliminary experiments, running BERT-base on 2GB Jetson Nano will leads to out of memory. Our hypothesis is that we can run BERT-base's inference computation graph on a 2GB device by iteratibely instantiaing the model's parameters. Also, our experiments for adaptive computing with hardware features will uild upon BERT.
+As a lot of follow-up works, our project aims to build upon BERT and improve the performance of BERT on resource limited devices, such as Jetson Nano. From our preliminary experiments, running BERT-base on 2GB Jetson Nano leads to out of memory. Our hypothesis is that we can run BERT-base's inference computation graph on a 2GB device by iteratibely instantiaing the model's parameters. Also, our experiments for adaptive computing with hardware features will uild upon BERT.
 
 - [RoBERTa](https://arxiv.org/pdf/1907.11692.pdf)
 
-RoBERTa presents a replication study of BERT. The authors pretrained the model with several modifications durign pretraining, which include:  (1) training the model longer, with bigger batches, over more data; (2) removing the next sentence prediction objective; (3) training on longer sequences; and (4) dynamically changing the masking pattern applied to the training data. The work shows that the original BERT is undertrained and it achieves better performance than BERT in every downstream task. For our project, we will use RoBERTa as another pretrained model target for our adaptive computing experiments. 
+RoBERTa presents a replication study of BERT. The authors pretrained the model with several modifications durign pretraining, which include:  (1) training the model longer, with bigger batches, over more data; (2) removing the next sentence prediction objective; (3) training on longer sequences; and (4) dynamically changing the masking pattern applied to the training data. The work shows that the original BERT is undertrained and it achieves better performance than BERT in nearly all the downstream tasks. For our project, we will use RoBERTa as another pretrained model target for our adaptive computing experiments. 
 
 - [ALBERT](https://arxiv.org/pdf/1909.11942.pdf)
 
@@ -24,11 +24,17 @@ ALBERT proposes two parameter reduction techniques to address the memory limitat
 
 - [DistilBERT](https://arxiv.org/pdf/1910.01108.pdf)
 
-DistillBERT is a BERT model with less layers trained through the technique of knowledge distillation. It is trained with a combination of three different losses, including distillation loss, masked LM loss and cosine embedding loss. The model ends up to be 40% smaller than a BERT model, while  retaining 97% of its language understanding capabilities and being 60% faster. DistillBERT provides a smaller, faster and lighter model suitable for on-device computations. In our project, we will compare our iterative ayer instatiation method to DistillBERT as an alternative on-device solution with zero loss in performance but higher latency. 
+DistillBERT is a smaller transformer-based model trained through knowledge distillation from BERT. It is trained with a combination of three different losses: distillation loss, masked LM loss, and cosine embedding loss. The model ends up to be 40% smaller than a BERT model, while  retaining 97% of its language understanding capabilities and being 60% faster. DistillBERT provides a smaller, faster and lighter model suitable for on-device computations. In our project, we will compare our iterative ayer instatiation method to DistillBERT as an alternative on-device solution with zero loss in performance but higher latency. 
 
 
-- DeeBERT
-- BERT Loses Patience
+- [DeeBERT](https://aclanthology.org/2020.acl-main.204.pdf)
+
+DeeBERT introduces the technique of dynamic early exiting to accelerate BERT Inference. Specifically, it inserts extra classification layers (referred as off-ramps) between each transformer layer of BERT during training. At inference time, the model will output the prediction of the first off-ramp where the entropy of the probavility distribution is less than the preset threshold. This method saves up to 40% inference time for both BERT and RoBERTa with minimal degradation in model quality. For the adaptive computing part of our project, we will build upon DeeBERT by including time constraints and hardware features during training. We will compare our experiment results to DeeBERT and hope to see some improvement in performance.
+
+- [BERT Loses Patience](https://arxiv.org/pdf/2006.04152.pdf)
+
+Similar as DeeBERT, PABEE adopted early exiting method to accelerate BERT Inference. Rather than comparing entropy to threshold at inference time, PABEE exits with the output of an off-ramp layer when the intermediate predictions of the internal classifiers remain unchanged for t times consecutively, where t is a pre-defined patience. For experiments on ALBERT, PABEE can even improve the perfermance on downstream tasks, while speeding up inference time simultaneously. For our project, we will use PABEE as the baseline for our adaptive computing part.
+
 - 
 
 ## Tensor Computation with Heterogeneos Memory
