@@ -55,6 +55,12 @@ In particular given the two apparent *branches* of the project we will consider 
 
 ## Adaptive Computation
 
+1. We will use PABEE (code available at [link](https://github.com/huggingface/transformers/tree/master/examples/research_projects/bert-loses-patience)) on ALBERT model as our baseline for the adaptive computation branch. We will adopt a pretrained ALBERT checkpoint from transformers library. We will use (**TODO**: machine config) to fine-tune the model with PABEE implementation on **TODO** tasks from GLUE benchmark datasets, with the original train test splits. We fine-tune each model for 5 epochs and then evaluate models on our 4GB Jetson Nano device. 
+
+2. Yes, the baselines are able to run on device.
+
+3. After training the baselines on clusters, we will evaluate the models on 4GB Jetson Nano device, with the corresponding validation data for each downstream task. We will compare the latency and GLUE score with the original ALBERT models to evaluate the performance of PABEE. 
+
 3: Extra
 ----
 (**TODO**: preliminary results with iterative desirialization)
