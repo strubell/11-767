@@ -19,6 +19,6 @@ Group members present in lab today:
 
 3: Next steps
 ----
-1. Are you making sufficient progress towards completing your final project? 
+1. Are you making sufficient progress towards completing your final project? Explain why or why not. If not, please report how you plan to change the scope and/or focus of your project accordingly.
 2. Based on your work today / this week, and your answer to (1), what are your group's planned next steps?
 3. How will each group member contribute towards those steps? 
