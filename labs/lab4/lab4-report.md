@@ -56,10 +56,12 @@ In particular given the two apparent *branches* of the project we will consider 
 
 ## Iterative Model Deserialization
 
-For baselines for iterative model deserialization and experiments with the memory capabilities of the Jetson board, we will consider a BERT-base and a [BERT-small](https://arxiv.org/abs/1908.08962) model to evaluate the tradeoff between memory usage and performance. Experiments for latency and memory usage were performed with batch size == 1.
+For baselines for iterative model deserialization and experiments with the memory capabilities of the Jetson board, we will consider a BERT-base and a [BERT-small](https://arxiv.org/abs/1908.08962) model to evaluate the tradeoff between memory usage and performance. We will evaluate on the NVIDIA Jetson 2Gb since this more memory constrained scenario is suited for our proposed approeach. We also run evaluations on a server for comparison.
+
+Experiments for latency and memory usage were performed with batch size == 1. We profiled for memory using `torch.profiler` for more accurate measure of memory usage and latency is averaged across all test samples across all test sets.
 We will also experiment with quantitized versions of these models.
 
-Given our previous knowledge of the Jetson board, we expect that the BERT-base won't fit, while BERT-base-qt will fit but will be slower due to only working on the CPU. BERT-small will fit, will be faster and use less memory than BERT-base but will be less accurate. 
+Given our previous knowledge of the Jetson 2Gb board, we expect that the BERT-base won't fit, while BERT-base-qt will fit but will be slower due to only working on the CPU. BERT-small will fit, will be faster and use less memory than BERT-base but will be less accurate. 
 
 ### Results
 
@@ -69,15 +71,19 @@ The table below shows the results for the baseline
 
 We can see that results are pretty much as expected. BERT-base beats BERT-small in all tasks, and the un-quantitized models slightly outperforming their quantitized counterparts. 
 
-In terms of memory and latency, as expected the BERT-base models are much slower and consume much more memory than the BERT-small models. The quantitized models consume less memory BUT since they run on the CPU, are actually slower than their unquantitized counterparts. Due to the size of the BERT-base model, we were unable to run it on the Jetson 2GB, with the computation constantly hitting SWAP, making the our case for an iterative model deserialization stronger.
+In terms of memory and latency, as expected the BERT-base models are much slower and consume much more memory than the BERT-small models. 
+The quantitized models consume less memory BUT since they run on the CPU, are actually slower than their unquantitized counterparts. 
+Due to the size of the BERT-base model, we were unable to run it on the Jetson 2GB, with the computation constantly hitting SWAP, making the our case for an iterative model deserialization stronger. Therefor results for BERT-base were computed on the server, but should theorically be the exact same as if ran on the Jetson.
 
-Interestingly, the accelarator on the NVIDIA Jetson 2Gb seems to be slower than the CPU on the server (albeit this could be due to the model being quantitized OR a bottleneck in memory or other place)
+Interestingly, the accelarator on the NVIDIA Jetson 2Gb seems to be slower than the CPU on the server (albeit this could be due to the model being quantitized OR a bottleneck in memory or other places)
 
 ### Problems faced
 
 Unfortunatly, the server used for finetuning the BERT model was affected by performance issues the last few days. Therefor we were unable to fine-tune a BERT-based on MNLI. We expect to have this in the next week
 
-This also lead us to move some of the experiments mid-way to new server. Therefor experiments with the BERT-small model were peformed on a server with a A100 while experiment with BERT-base were performed on server with an RTX8000. However while this might affect the relative peformance between the base and small model, we believe much of the conclusion will be the same.
+This also lead us to move some of the experiments mid-way to new server. 
+Therefor experiments with the BERT-small model were peformed on a server with a A100 while experiment with BERT-base were performed on server with an RTX8000. 
+However while this might affect the relative peformance between the base and small model, we believe much of the conclusion will be the same.
 
 ## Adaptive Computation
 
