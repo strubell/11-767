@@ -6,6 +6,7 @@ Patrick Fernandes, Jared Fernandez, Haoming Zhang, Hao Zhu
 
 1: Related Work
 ----
+## Adaptive Computation
 
 - [BERT](https://arxiv.org/pdf/1810.04805.pdf)
 
@@ -23,7 +24,7 @@ ALBERT proposes two parameter reduction techniques to address the memory limitat
 
 - [DistilBERT](https://arxiv.org/pdf/1910.01108.pdf)
 
-DistillBERT is a smaller transformer-based model trained through knowledge distillation from BERT. It is trained with a combination of three different losses: distillation loss, masked LM loss, and cosine embedding loss. The model ends up to be 40% smaller than a BERT model, while  retaining 97% of its language understanding capabilities and being 60% faster. DistillBERT provides a smaller, faster and lighter model suitable for on-device computations. In our project, we will compare our iterative layer instatiation method to DistillBERT as an alternative on-device solution with zero loss in performance but higher latency. 
+DistillBERT is a smaller transformer-based model trained through knowledge distillation from BERT. It is trained with a combination of three different losses: distillation loss, masked LM loss, and cosine embedding loss. The model ends up to be 40% smaller than a BERT model, while  retaining 97% of its language understanding capabilities and being 60% faster. DistillBERT provides a smaller, faster and lighter model suitable for on-device computations. In our project, we will compare our iterative ayer instatiation method to DistillBERT as an alternative on-device solution with zero loss in performance but higher latency. 
 
 
 - [DeeBERT](https://aclanthology.org/2020.acl-main.204.pdf)
@@ -60,8 +61,6 @@ We will also experiment with quantitized versions of these models.
 
 Given our previous knowledge of the Jetson board, we expect that the BERT-base won't fit, while BERT-base-qt will fit but will be slower due to only working on the CPU. BERT-small will fit, will be faster and use less memory than BERT-base but will be less accurate. 
 
-### Results
-
 The table below shows the results for the baseline
 
 We can see that results are pretty much as expected. BERT-base beats BERT-small in all tasks, and the un-quantitized models slightly outperforming their quantitized counterparts. 
@@ -72,9 +71,28 @@ Interestingly, the accelarator on the NVIDIA Jetson 2Gb seems to be slower than 
 
 ## Adaptive Computation
 
-1. We will use PABEE (code available at [link](https://github.com/huggingface/transformers/tree/master/examples/research_projects/bert-loses-patience)) on ALBERT model as our baseline for the adaptive computation branch. We will adopt a pretrained ALBERT checkpoint from transformers library. We will use (**TODO**: machine config) to fine-tune the model with PABEE implementation on **TODO** tasks from GLUE benchmark datasets, with the original train test splits. We fine-tune each model for 5 epochs and then evaluate models on our 4GB Jetson Nano device. 
+We used PABEE (code available at [link](https://github.com/huggingface/transformers/tree/master/examples/research_projects/bert-loses-patience)) from a pretrained ALBERT model as our baseline for the adaptive computation branch. We will adopt a pretrained ALBERT checkpoint from transformers library. We will use a machine learning server with an Nvidia RTX-8000 GPU to fine-tune the model with PABEE implementation for patience-based early exit on MNLI, MNLI-MM, QNLI, QQP, and CoLA tasks from GLUE benchmark datasets, with the original train test splits. We fine-tune each model for 5 epochs and then evaluate models on our 4GB Jetson Nano device. 
 
-2. Yes, the baselines are able to run on device.
+To ensure that the early exit baselines are able to run on device, we use an ALBERT-based model to verify the performance behavior of the early-exit models. 
 
-3. After training the baselines on clusters, we will evaluate the models on 4GB Jetson Nano device, with the corresponding validation data for each downstream task. We will compare the latency and GLUE score with the original ALBERT models to evaluate the performance of PABEE. 
+After training the baselines on clusters, we will evaluate the models on 4GB Jetson Nano device, with the corresponding validation data for each downstream task. We will compare the latency and GLUE score with the original ALBERT models to evaluate the performance of PABEE. We report the accuracy and the relative speedups of a full 12-layer ALBERT model and ALBERT model with patience-based early-exit off ramps.
 
+The early-exit model using BERT-based did not fit on device. To extend the early exit framework to larger models such as BERT, we will merge the adaptive computing work with the previously discussed deserialization framework. For a baseline early-exit model that did fit in memory, we used ALBERT due to it's smaller overhead from tied parameteres.
+
+While we were able to complete the desired baseline runs, we did run into challenges where even an ALBERT model was close to max utilization and OOM issues which required frequent rebooting and clearing cached memory. There were additional challenges in GLUE evaluation libraries which required compilation of Python libraries from their source. 
+
+On average, single example inference took between 5-10 ms per iteration and saw RAM utilization between 3.2 and 3.4 GB of the Jetson's 4GB shared memory. 
+
+| Task    | Full Inference Accuracy | PABEE Accuracy | PABEE Speedup |
+|---------|-------------------------|----------------|---------------|
+| CoLA    | 53.93                   | 54.16          | 1.23x         |
+| MNLI    | 84.35                   | 84.36          | 1.16x         |
+| MNLI-MM | 84.13                   | 84.34          | 1.16x         |
+| QNLI    | 90.37                   | 90.43          | 1.32x         |
+| QQP     | 90.64                   | 90.69          | 1.48x         |
+
+The speedups of PABEE match our expectations. However, the speedup and accuracy improvements only occur when using a patience value of 6 or 7 which suggests that the model is still running near twice the ideal amount of computation. In our experiments, we intend to revise the PABEE off-ramp formulation to include better estimation of both the model confidence and penalties for additional computation to encourage more aggressive changes in compute requirements. The OOM memory issues from larger models validates our intuition that progressive loading of models is necessary.
+
+3: Extra
+----
+(**TODO**: preliminary results with iterative desirialization)
