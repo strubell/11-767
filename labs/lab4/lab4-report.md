@@ -62,6 +62,13 @@ Given our previous knowledge of the Jetson board, we expect that the BERT-base w
 
 ### Results
 
+The table below shows the results for the baseline
+
+We can see that results are pretty much as expected. BERT-base beats BERT-small in all tasks, and the un-quantitized models slightly outperforming their quantitized counterparts. 
+
+In terms of memory and latency, as expected the BERT-base models are much slower and consume much more memory than the BERT-small models. The quantitized models consume less memory BUT since they run on the CPU, are actually slower than their unquantitized counterparts. Due to the size of the BERT-base model, we were unable to run it on the Jetson 2GB, with the computation constantly hitting SWAP, making the our case for an iterative model deserialization stronger.
+
+Interestingly, the accelarator on the NVIDIA Jetson 2Gb seems to be slower than the CPU on the server (albeit this could be due to the model being quantitized OR a bottleneck in memory or other place)
 
 ## Adaptive Computation
 
