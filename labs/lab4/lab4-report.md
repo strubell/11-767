@@ -117,4 +117,4 @@ This includes picking experiment with models mentioned on the related work on bo
 
 For iterative model deserialization, we will start to work on a prototype checkpoint processor that formats a checkpoint to be have external metadata without requiring the loading of the whole checkpoint. Also early experiments with how memory is distributed across layers will be performed, as well as giving thought to the framework necessary for peforming computation on partial computation graph.
 
-**TODO**(adaptive)
+For adaptive computation, we will start to work on using hardware features as additional input into ramp-offs and also adding latency penalty during the fine-tuning of the off-ramps. Also, we will try to use DistillBERT as our pretrained model target since that would allow us to run inference on the 2 GB device.
