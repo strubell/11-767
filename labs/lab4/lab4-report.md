@@ -56,18 +56,28 @@ In particular given the two apparent *branches* of the project we will consider 
 
 ## Iterative Model Deserialization
 
-For baselines for iterative model deserialization and experiments with the memory capabilities of the Jetson board, we will consider a BERT-base and a [BERT-small](https://arxiv.org/abs/1908.08962) model to evaluate the tradeoff between memory usage and performance
+For baselines for iterative model deserialization and experiments with the memory capabilities of the Jetson board, we will consider a BERT-base and a [BERT-small](https://arxiv.org/abs/1908.08962) model to evaluate the tradeoff between memory usage and performance. Experiments for latency and memory usage were performed with batch size == 1.
 We will also experiment with quantitized versions of these models.
 
 Given our previous knowledge of the Jetson board, we expect that the BERT-base won't fit, while BERT-base-qt will fit but will be slower due to only working on the CPU. BERT-small will fit, will be faster and use less memory than BERT-base but will be less accurate. 
 
+### Results
+
 The table below shows the results for the baseline
+
+![Results with BERT baselines](bert-baselines.png)
 
 We can see that results are pretty much as expected. BERT-base beats BERT-small in all tasks, and the un-quantitized models slightly outperforming their quantitized counterparts. 
 
 In terms of memory and latency, as expected the BERT-base models are much slower and consume much more memory than the BERT-small models. The quantitized models consume less memory BUT since they run on the CPU, are actually slower than their unquantitized counterparts. Due to the size of the BERT-base model, we were unable to run it on the Jetson 2GB, with the computation constantly hitting SWAP, making the our case for an iterative model deserialization stronger.
 
 Interestingly, the accelarator on the NVIDIA Jetson 2Gb seems to be slower than the CPU on the server (albeit this could be due to the model being quantitized OR a bottleneck in memory or other place)
+
+### Problems faced
+
+Unfortunatly, the server used for finetuning the BERT model was affected by performance issues the last few days. Therefor we were unable to fine-tune a BERT-based on MNLI. We expect to have this in the next week
+
+This also lead us to move some of the experiments mid-way to new server. Therefor experiments with the BERT-small model were peformed on a server with a A100 while experiment with BERT-base were performed on server with an RTX8000. However while this might affect the relative peformance between the base and small model, we believe much of the conclusion will be the same.
 
 ## Adaptive Computation
 
@@ -93,6 +103,12 @@ On average, single example inference took between 5-10 ms per iteration and saw 
 
 The speedups of PABEE match our expectations. However, the speedup and accuracy improvements only occur when using a patience value of 6 or 7 which suggests that the model is still running near twice the ideal amount of computation. In our experiments, we intend to revise the PABEE off-ramp formulation to include better estimation of both the model confidence and penalties for additional computation to encourage more aggressive changes in compute requirements. The OOM memory issues from larger models validates our intuition that progressive loading of models is necessary.
 
-3: Extra
+3: Future Work
 ----
-(**TODO**: preliminary results with iterative desirialization)
+
+The next weeks will go by creating a unified framework for both braches of our experiments. 
+This includes picking experiment with models mentioned on the related work on both branches.
+
+For iterative model deserialization, we will start to work on a prototype checkpoint processor that formats a checkpoint to be have external metadata without requiring the loading of the whole checkpoint. Also early experiments with how memory is distributed across layers will be performed, as well as giving thought to the framework necessary for peforming computation on partial computation graph.
+
+**TODO**(adaptive)
