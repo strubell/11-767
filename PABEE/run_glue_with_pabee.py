@@ -51,6 +51,7 @@ from transformers import glue_output_modes as output_modes
 from transformers import glue_processors as processors
 from transformers.trainer_utils import is_main_process
 
+from metrics import Benchmark
 
 try:
     from torch.utils.tensorboard import SummaryWriter
@@ -303,7 +304,7 @@ def evaluate(args, model, tokenizer, prefix="", patience=0):
         # multi-gpu eval
         if args.n_gpu > 1 and not isinstance(model, nn.DataParallel):
             model = nn.DataParallel(model)
-
+        
         # Eval!
         logger.info("***** Running evaluation {} *****".format(prefix))
         logger.info("  Num examples = %d", len(eval_dataset))
@@ -342,6 +343,37 @@ def evaluate(args, model, tokenizer, prefix="", patience=0):
         elif args.output_mode == "regression":
             preds = np.squeeze(preds)
         result = compute_metrics(eval_task, preds, out_label_ids)
+
+        # benchmark
+        if args.benchmark:
+            from functools import partial
+
+            id_constructor = partial(
+                torch.randint,
+                low=0,
+                high=tokenizer.vocab_size,
+                size=(args.eval_batch_size, args.max_seq_length),
+                device=args.device,
+            )
+
+            benchmarker = Benchmark(
+                model,
+                id_constructor,
+                1,
+                True,
+                device_idx=0,
+            )
+
+            benchmark_result = {}
+            memory_usage = benchmarker.get_memory()
+            benchmark_result["avg_memory"] = np.mean(memory_usage)
+            benchmark_result["max_memory"] = np.max(memory_usage)
+            benchmark_result["latency"] = benchmarker.get_wallclock(20)
+            benchmark_result["macs"] = benchmarker.get_flops_count()
+            benchmark_result["total_params"] = benchmarker.get_param_count(False)
+            benchmark_result["trainable_params"] = benchmarker.get_param_count(True)
+            result.update(benchmark_result)
+
         results.update(result)
 
         output_eval_file = os.path.join(eval_output_dir, prefix, "eval_results.txt")
@@ -598,6 +630,9 @@ def main():
     )
     parser.add_argument("--server_ip", type=str, default="", help="For distant debugging.")
     parser.add_argument("--server_port", type=str, default="", help="For distant debugging.")
+    
+    parser.add_argument("--benchmark", action="store_true", help="run benchmark during evaluation")
+
     args = parser.parse_args()
 
     if (
