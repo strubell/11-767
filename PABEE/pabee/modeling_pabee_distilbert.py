@@ -104,6 +104,7 @@ class DistilBertModelWithPabee(DistilBertModel):
         output_dropout=None,
         output_layers=None,
         regression=False,
+        output_after=None,
     ):
         r"""
         Return:
@@ -158,6 +159,19 @@ class DistilBertModelWithPabee(DistilBertModel):
         if inputs_embeds is None:
             inputs_embeds = self.embeddings(input_ids)  # (bs, seq_length, dim)
         encoder_outputs = inputs_embeds
+
+        if output_after is not None:
+            for i in range(self.config.num_hidden_layers):
+                encoder_outputs = self.encoder.adaptive_forward(
+                    encoder_outputs, current_layer=i, attention_mask=extended_attention_mask, head_mask=head_mask
+                )
+
+                if i == output_after:
+                    pooled_output = activation(pre_classifier(encoder_outputs[:,0]))
+                    logits = output_layers[i](pooled_output)
+                    return
+            return
+
 
         if self.training:
             res = []
@@ -246,6 +260,7 @@ class DistilBertForSequenceClassificationWithPabee(DistilBertPreTrainedModel):
         head_mask=None,
         inputs_embeds=None,
         labels=None,
+        output_after=None,
     ):
         r"""
             labels (:obj:`torch.LongTensor` of shape :obj:`(batch_size,)`, `optional`):
@@ -289,6 +304,20 @@ class DistilBertForSequenceClassificationWithPabee(DistilBertPreTrainedModel):
             loss, logits = outputs[:2]
 
         """
+        if output_after is not None:
+            self.distilbert(
+                input_ids=input_ids,
+                attention_mask=attention_mask,
+                head_mask=head_mask,
+                inputs_embeds=inputs_embeds,
+                pre_classifier=self.pre_classifier,
+                activation=self.activation,
+                output_dropout=self.dropout,
+                output_layers=self.classifiers,
+                regression=self.num_labels == 1,
+                output_after=output_after
+            )
+            return 
 
         logits = self.distilbert(
             input_ids=input_ids,

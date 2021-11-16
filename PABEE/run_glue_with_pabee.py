@@ -58,6 +58,8 @@ try:
 except ImportError:
     from tensorboardX import SummaryWriter
 
+from timeit import default_timer as timer
+
 
 logger = logging.getLogger(__name__)
 
@@ -397,6 +399,79 @@ def evaluate(args, model, tokenizer, prefix="", patience=0):
     return results
 
 
+def inference_time(args, model, tokenizer, prefix=""):
+
+    if args.model_type == "albert":
+        model.albert.set_regression_threshold(args.regression_threshold)
+        model.albert.reset_stats()
+    elif args.model_type == "bert":
+        model.bert.set_regression_threshold(args.regression_threshold)
+        model.bert.reset_stats()
+    elif args.model_type == "distilbert":
+        model.distilbert.set_regression_threshold(args.regression_threshold)
+        model.distilbert.reset_stats()
+    else:
+        raise NotImplementedError()
+
+    # Loop to handle MNLI double evaluation (matched, mis-matched)
+    eval_task_names = ("mnli", "mnli-mm") if args.task_name == "mnli" else (args.task_name,)
+    eval_outputs_dirs = (args.output_dir, args.output_dir + "-MM") if args.task_name == "mnli" else (args.output_dir,)
+
+    for eval_task, eval_output_dir in zip(eval_task_names, eval_outputs_dirs):
+        eval_dataset = load_and_cache_examples(args, eval_task, tokenizer, evaluate=True)
+
+        if not os.path.exists(eval_output_dir) and args.local_rank in [-1, 0]:
+            os.makedirs(eval_output_dir)
+
+        args.eval_batch_size = args.per_gpu_eval_batch_size * max(1, args.n_gpu)
+        # Note that DistributedSampler samples randomly
+        eval_sampler = SequentialSampler(eval_dataset)
+        eval_dataloader = DataLoader(eval_dataset, sampler=eval_sampler, batch_size=args.eval_batch_size)
+
+        # multi-gpu eval
+        if args.n_gpu > 1 and not isinstance(model, nn.DataParallel):
+            model = nn.DataParallel(model)
+        
+        # Eval!
+        logger.info("***** Running evaluation on inference time {} *****".format(prefix))
+        logger.info("  Batch size = %d", args.eval_batch_size)
+
+        num_layers = model.config.num_hidden_layers
+        latencies = []
+        for l in range(num_layers):
+            latency = []
+            for i, batch in enumerate(eval_dataloader):
+                model.eval()
+                batch = tuple(t.to(args.device) for t in batch)
+
+                with torch.no_grad():
+                    inputs = {
+                        "input_ids": batch[0],
+                        "attention_mask": batch[1],
+                        "labels": batch[2],
+                        # "labels": batch[3],
+                    }
+                    # inputs["token_type_ids"] = batch[2]
+                    start = timer()
+                    model(**inputs, output_after=l)
+                    end = timer()
+                    latency.append(end-start)
+                if i == 49:
+                    break
+            latencies.append(latency)
+
+        latencies = np.array(latencies)
+        results = {}
+        results['avg_time'] = latencies[:,10:].mean(axis=1).tolist()
+        results['time_std'] = latencies[:,10:].std(axis=1).tolist()
+
+        output_eval_file = os.path.join(eval_output_dir, prefix, "inference_time.txt")
+        with open(output_eval_file, "w") as writer:
+            writer.write(json.dumps(results))
+
+    return
+
+
 def load_and_cache_examples(args, task, tokenizer, evaluate=False):
     if args.local_rank not in [-1, 0] and not evaluate:
         torch.distributed.barrier()  # Make sure only the first process in distributed training process the dataset, and the others will use the cache
@@ -633,6 +708,8 @@ def main():
     
     parser.add_argument("--benchmark", action="store_true", help="run benchmark during evaluation")
 
+    parser.add_argument("--inference_time_by_layer", action="store_true", help="run benchmark during evaluation")
+
     args = parser.parse_args()
 
     if (
@@ -740,6 +817,10 @@ def main():
     )
 
     logger.info("Training/evaluation parameters %s", args)
+
+    # get inference time by layer
+    if args.inference_time_by_layer:
+        return inference_time(args, model, tokenizer)
 
     # Training
     if args.do_train:
