@@ -83,6 +83,9 @@ class DistilBertModelWithPabee(DistilBertModel):
     def set_patience(self, patience):
         self.patience = patience
 
+    def set_runtimes(self, runtimes):
+        self.runtimes = runtimes
+
     def reset_stats(self):
         self.inference_instances_num = 0
         self.inference_layers_num = 0
@@ -191,7 +194,13 @@ class DistilBertModelWithPabee(DistilBertModel):
             )
             pooled_output = activation(pre_classifier(encoder_outputs[0][:,0]))
             res = [output_layers[self.config.num_hidden_layers - 1](pooled_output)]
+        elif self.runtime_exiting:
+            pass
+            # Hard threshold for runtime, penalty schedule based on inference time
+            # Weighted "patience" based on layers
+            # Log previous confidences -> fn(highest confidence, runtime) -> exit?
         else:
+            # Weighted penalty by log likelihoods, increasing penalty on early layers
             patient_counter = 0
             patient_result = None
             calculated_layer_num = 0
@@ -317,7 +326,7 @@ class DistilBertForSequenceClassificationWithPabee(DistilBertPreTrainedModel):
                 regression=self.num_labels == 1,
                 output_after=output_after
             )
-            return 
+            return
 
         logits = self.distilbert(
             input_ids=input_ids,
@@ -347,7 +356,7 @@ class DistilBertForSequenceClassificationWithPabee(DistilBertPreTrainedModel):
                 if total_loss is None:
                     total_loss = loss
                 else:
-                    total_loss += loss * (ix + 1)
+                    total_loss += loss * (len(logits) - ix + 1)
                 total_weights += ix + 1
             outputs = (total_loss / total_weights,) + outputs
 
