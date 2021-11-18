@@ -1,6 +1,8 @@
 import argparse
 import os
 
+from memory_profiler import memory_usage
+
 from transformers import BertModel, BertTokenizer
 import torch
 
@@ -46,12 +48,17 @@ def benchmark(tokenizer, model, inference_steps=10):
 
     import time
 
-    start = time.time()
+    max_memory =0
     with torch.no_grad():
+        start = time.time()
         for _ in range(inference_steps):
             model(**encoded_input)
-    end = time.time()
-    print((end - start) / inference_steps)
+        end = time.time()
+        for _ in range(inference_steps):
+            max_memory += max(memory_usage(lambda: model(**encoded_input)))
+
+    print(f"Time per inference step: {(end - start) / inference_steps}")
+    print(f"Max memory usage: {max_memory / inference_steps}")
 
 
 if __name__ == "__main__":
@@ -59,6 +66,8 @@ if __name__ == "__main__":
     parser.add_argument("--save-splitted-checkpoint", default=None)
     parser.add_argument("--splitted-checkpoint", default=None)
     parser.add_argument("--lazy", action="store_true")
+    parser.add_argument("--max-loaded-layers", default=1, type=int)
+    parser.add_argument("--lazy-schedule", default=None)
     args = parser.parse_args()
 
     tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
@@ -71,7 +80,7 @@ if __name__ == "__main__":
                 setattr(configuration, "filenames", [])
                 configuration.filenames.append("bert_layer_" + str(i) + ".pt")
         
-        model = LazyBert(configuration)
+        model = LazyBert(configuration, max_loaded_layers=args.max_loaded_layers, lazy_schedule=args.lazy_schedule)
         model.load_state_dict(
             torch.load(os.path.join(args.splitted_checkpoint, "bert_model.pt")), strict=False
         )  # Hacky: strict = False so that dummy parameters are ignored

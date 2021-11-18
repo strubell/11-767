@@ -6,19 +6,19 @@ from lazy_module_list import LazyModuleList
 
 
 class LazyBert(BertModel):
-    def __init__(self, config, add_pooling_layer=True):
+    def __init__(self, config, add_pooling_layer=True, max_loaded_layers=1, lazy_schedule="oldest"):
         BertPreTrainedModel.__init__(self, config)
         self.config = config
 
         self.embeddings = BertEmbeddings(config)
-        self.encoder = LazyBertEncoder(config)
+        self.encoder = LazyBertEncoder(config, max_loaded_layers=max_loaded_layers, lazy_schedule=lazy_schedule)
 
         self.pooler = BertPooler(config) if add_pooling_layer else None
 
         self.init_weights()
 
 class LazyBertEncoder(BertEncoder):
-    def __init__(self, config):
+    def __init__(self, config, max_loaded_layers=1, lazy_schedule="oldest"):
         nn.Module.__init__(self)
         self.config = config
         self.layer = LazyModuleList(
@@ -26,6 +26,8 @@ class LazyBertEncoder(BertEncoder):
                 (BertLayer, (config,), {}) for i in range(config.num_hidden_layers)
             ],
             modules_checkpoints=self.config.filenames,
+            max_instantied=max_loaded_layers,
+            delete_schedule=lazy_schedule,
         )
         self.gradient_checkpointing = False
 

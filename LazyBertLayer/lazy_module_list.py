@@ -15,11 +15,19 @@ class LazyModuleList(nn.Module):
         modules_checkpoints: Optional[Iterable[str]] = None,
         max_instantied: int = 1,
         check_refs: bool = True,
-    ):
+        delete_schedule: str = "oldest"
+):
         super().__init__()
+        #if preload_modules:
+        #    assert delete_schedule == "oldest", "preloading only works with a FIFO schedule"
+
+        self.preload_modules = delete_schedule == "oldest"
+
         self.max_instantied = max_instantied
         self.instantied_modules = OrderedDict()
         self.check_refs = check_refs
+        self.delete_schedule = delete_schedule
+
         if modules_defs is not None:
             self.modules_defs = list(modules_defs)
             self.modules_checkpoints = (
@@ -29,7 +37,15 @@ class LazyModuleList(nn.Module):
     def load_module(self, idx: int):
         if len(self.instantied_modules) >= self.max_instantied:
             # get the oldest module instantied
-            idx_to_delete = next(iter(self.instantied_modules.items()))[0]
+            #print(idx)
+            #print(list(iter(self.instantied_modules.keys())))
+            ordered_idxs = list(iter(self.instantied_modules.keys()))
+            if self.delete_schedule == "oldest":
+                idx_to_delete = ordered_idxs[0]
+            elif self.delete_schedule == "newest":
+                idx_to_delete = ordered_idxs[-1]
+            else:
+                raise ValueError("delete_schedule must be either 'oldest' or 'newest'")
 
             # check for reference count to make sure there are no 
             # outside references that could prevent the deletion of the object
@@ -61,6 +77,9 @@ class LazyModuleList(nn.Module):
         # TODO: add slices
         if idx not in self.instantied_modules:
             self.load_module(idx)
+            if self.preload_modules:
+                for next_idxs in range(idx + 1, min(idx+self.max_instantied, len(self.modules_defs))):
+                    self.load_module(next_idxs)
         return self.instantied_modules[idx]
 
     def __setitem__(self, idx: int, module: nn.Module) -> None:
@@ -76,7 +95,7 @@ class LazyModuleList(nn.Module):
         return len(self.module_defs)
 
 
-# TODO: add idecorator that replaces ModuleList
+# TODO: add decorator that replaces ModuleList
 # with LazyModuleList automatically
 # not trivial, will involve complex parsing of code
 # checking for constructor calls
