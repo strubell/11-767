@@ -36,9 +36,7 @@ class LazyModuleList(nn.Module):
 
     def load_module(self, idx: int):
         if len(self.instantied_modules) >= self.max_instantied:
-            # get the oldest module instantied
-            #print(idx)
-            #print(list(iter(self.instantied_modules.keys())))
+            # get the oldest/newest module instantied
             ordered_idxs = list(iter(self.instantied_modules.keys()))
             if self.delete_schedule == "oldest":
                 idx_to_delete = ordered_idxs[0]
