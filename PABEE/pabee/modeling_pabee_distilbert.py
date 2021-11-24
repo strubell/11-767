@@ -17,6 +17,7 @@
 
 
 import logging
+import time 
 
 import torch
 from torch import nn
@@ -200,7 +201,7 @@ class DistilBertModelWithPabee(DistilBertModel):
             # Weighted "patience" based on layers
             # Log previous confidences -> fn(highest confidence, runtime) -> exit?
         else:
-            # Weighted penalty by log likelihoods, increasing penalty on early layers
+            init_time = time.time()
             patient_counter = 0
             patient_result = None
             calculated_layer_num = 0
@@ -231,6 +232,8 @@ class DistilBertModelWithPabee(DistilBertModel):
 
                 patient_result = logits
                 if patient_counter == self.patience:
+                    break
+                if self.runtime_threshold > time.time() - init_time:
                     break
             res = [patient_result]
             self.inference_layers_num += calculated_layer_num
@@ -356,7 +359,7 @@ class DistilBertForSequenceClassificationWithPabee(DistilBertPreTrainedModel):
                 if total_loss is None:
                     total_loss = loss
                 else:
-                    total_loss += loss * (len(logits) - ix + 1)
+                    total_loss += loss * (len(logits) - ix)
                 total_weights += ix + 1
             outputs = (total_loss / total_weights,) + outputs
 
