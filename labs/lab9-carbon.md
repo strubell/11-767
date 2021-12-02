@@ -8,10 +8,10 @@ Group members present in lab today:
 
 1: Inference
 ----
-1. Plug your device in to the Kill-a-watt and run inference using your model to get a measurement of the energy draw. 
+1. Plug your device in to the Kill-a-watt and run inference using your model to get a measurement of the energy draw. What is its baseline energy draw, and how does that compare to running inference?
 2. Multiply energy draw by inference time to get an estimate of energy required per inference (you can average over input size).
 3. Multiply this by the carbon intensity of the location of your device. You can use [this resource](https://www.epa.gov/egrid/power-profiler#/).
-3. Please include at least this estimate in your final project report.
+4. Please include at least this estimate in your final project report.
 
 2: Training
 ----
@@ -19,6 +19,6 @@ Group members present in lab today:
 
 3: Extra
 ----
-1. Everything else: Do you have logs you can use 
+1. Everything else: Do you have logs you can use to estimate the amount of energy + carbon that went in to all project development? Other ways of estimating? Was your device plugged in and running for the entire semester?
 2. Supply chain / lifecycle analysis: Can you estimate the additional footprint due to manufacturing hardware? Lifetime energy use of your project if it was deployed in the real world?
 3. If you have a Pi or Jetson 4GB: Compare Kill-a-watt measurements to command line energy measurements, and discuuss.
