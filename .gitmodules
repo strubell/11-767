@@ -1,0 +1,3 @@
+[submodule "DeviceBenchmarking"]
+	path = DeviceBenchmarking
+	url = git@github.com:JaredFern/DeviceBenchmarking.git
