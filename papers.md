@@ -22,7 +22,10 @@ Pruning
 ----
 - [Optimal Brain Damage](https://papers.nips.cc/paper/1989/hash/6c9882bbac1c7093bd25041881277658-Abstract.html)
 - [The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks](https://arxiv.org/abs/1803.03635)
+- [The Lottery Ticket Hypothesis: A Survey (blog post)](https://roberttlange.github.io/posts/2020/06/lottery-ticket-hypothesis/)
 - [Bayesian Bits: Unifying Quantization and Pruning](https://arxiv.org/abs/2005.07093)
+- [Structured Pruning of Neural Networks with Budget-Aware Regularization](https://ieeexplore.ieee.org/abstract/document/8953545)
+- [Block Pruning For Faster Transformers](https://aclanthology.org/2021.emnlp-main.829/)
 
 Neural architecture search
 ----
