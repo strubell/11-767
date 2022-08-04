@@ -85,7 +85,7 @@ Architecture-specific tricks: Softmax
 ----
 - [Efficient softmax approximation for GPUs](https://arxiv.org/abs/1609.04309)
 
-Architecture-specific tricks: Embeddings
+Architecture-specific tricks: Embeddings/inputs
 ----
 - [Adaptive Input Representations for Neural Language Modeling](https://arxiv.org/abs/1809.1085)
 
@@ -96,6 +96,7 @@ Task-specific tricks
 - [Non-autoregressive neural machine translation](https://arxiv.org/abs/1711.02281)
 - [Deep Encoder, Shallow Decoder: Reevaluating Non-autoregressive Machine Translation](https://arxiv.org/abs/2006.10369)
 - [Improving Low Compute Language Modeling with In-Domain Embedding Initialisation](https://arxiv.org/abs/2009.14109)
+- [COIL: Revisit Exact Lexical Match in Information Retrieval with Contextualized Inverted List](https://aclanthology.org/2021.naacl-main.241/)
 
 Architecture-specific tricks: Transformers
 ----
