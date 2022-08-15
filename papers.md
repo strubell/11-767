@@ -134,4 +134,4 @@ Carbon footprint and alternative power sources
 New papers
 ----
 - [Structured Pruning Learns Compact and Accurate Models](https://aclanthology.org/2022.acl-long.107/)
-- 
+- [Embedding Recycling for Language Models](https://arxiv.org/abs/2207.04993)
