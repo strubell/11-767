@@ -89,7 +89,7 @@ Now, try varying the depth and width of your base model. How do depth and width 
     - FLOPs on the x axis and latency on the y axis
    
     Discuss your results.
-7. Train and evaluate your model in both modalities using a variety of widths. Make sure you try both going narrower than the input, and larger than the input, if memory permits. Report the parameter counts, and generate the same three plots as in (6), and discuss.
+7. Train and evaluate your model in both modalities using a variety of widths. Make sure you try both going narrower than the input, and wider than the input, if memory permits. Report the parameter counts, and generate the same three plots as in (6), and discuss.
 
 Varying the input size
 ----
