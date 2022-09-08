@@ -56,7 +56,7 @@ The raw pixel values will work as input for now.
 
 Model and Evaluation
 ----
-Build a single-layer feed-forward network with ReLU activations and cross-entropy loss using PyTorch, and train it on the vision and language tasks. You can experiment with a few different settings of hyperparameters to find ones that work reasonably well for each modality. To start, you should be able to get an accuracy of about 97% using the following hyperparameters for MNIST and the Adam optimizer:
+Build a single-layer feed-forward network with ReLU activations and cross-entropy loss using PyTorch, and train it on the vision and language tasks. You can experiment with a few different settings of hyperparameters to find ones that work reasonably well for each modality. To start, you should be able to get an accuracy of about 97% using the following hyperparameters for MNIST using the Adam optimizer:
 
 | hyperparameter | value |
 | --- | --- |
