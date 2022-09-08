@@ -1,4 +1,4 @@
-11-767 Lab 1: Feed-forward neural networks for language and vision in PyTorch.
+Lab 1: Benchmarking Efficiency in Feed-Forward Neural Networks.
 ===
 In this lab you will build a basic feed-forward neural network for classification in PyTorch, and train and evaluate that model in terms of efficiency and classification accuracy on simple
 language and vision tasks. The goals of this exercise are: 
