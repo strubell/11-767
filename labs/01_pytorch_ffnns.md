@@ -81,7 +81,7 @@ Now, implement three methods for benchmarking the efficiency of this model:
 
 Varying Depth and Width
 ----
-Now, try varying the depth and width of your model. How do depth and width trade off accuracy and efficiency?
+Now, try varying the depth and width of your base model. How do depth and width trade off accuracy and efficiency?
 
 6. Train and evaluate your model in both modalities using a variety of depths. Report the parameter counts, FLOPs, and latency, and generate three plots:
     - FLOPs on the x axis and accuracy on the y axis
@@ -93,7 +93,7 @@ Now, try varying the depth and width of your model. How do depth and width trade
 
 Varying the input size
 ----
-Now, try varying the input size (input resolution) of your model. 
+Now, try varying the input size (input resolution) of your base model. 
 - For vision, you can do this by *downsampling* the input. You can find a list of transformations [here](https://pytorch.org/vision/stable/transforms.html).
 - For language, you can do this by reducing the vocabulary size.
 
