@@ -79,7 +79,7 @@ Now, implement three methods for benchmarking the efficiency of this model:
 5. Report the number of FLOPs that your model requires to perform inference.
 
 
-Varying Depth and Width
+Varying depth and width
 ----
 Now, try varying the depth and width of your base model. How do depth and width trade off accuracy and efficiency?
 
