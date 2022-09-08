@@ -87,7 +87,9 @@ Now, try varying the depth and width of your model. How do depth and width trade
     - FLOPs on the x axis and accuracy on the y axis
     - Latency on the x axis and accuracy on the y axis
     - FLOPs on the x axis and latency on the y axis
-7. Train and evaluate your model in both modalities using a variety of widths. Report the parameter counts, and generate the same three plots as in (6).
+   
+    Discuss your results.
+7. Train and evaluate your model in both modalities using a variety of widths. Report the parameter counts, and generate the same three plots as in (6), and discuss.
 
 Varying the input size
 ----
