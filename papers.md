@@ -108,6 +108,7 @@ Architecture-specific tricks: Transformers
 - [Are Larger Pretrained Language Models Uniformly Better? Comparing Performance at the Instance Level](https://arxiv.org/abs/2105.06020)
 - [Are Sixteen Heads Really Better Than One?](http://papers.nips.cc/paper/9551-are-sixteen-heads-really-better-than-one)
 - [Are Pre-trained Convolutions Better than Pre-trained Transformers?](https://aclanthology.org/2021.acl-long.335/)
+- [FNet: Mixing Tokens with Fourier Transforms](https://aclanthology.org/2022.naacl-main.319/)
 
 Speech
 ----
