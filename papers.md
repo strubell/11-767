@@ -52,6 +52,9 @@ Benchmarking
 - [Measuring the Carbon Intensity of AI in Cloud Instances](https://dl.acm.org/doi/10.1145/3531146.3533234)
 - [Towards the Systematic Reporting of the Energy and Carbon Footprints of Machine Learning](https://jmlr.org/papers/v21/20-312.html)
 - [Carbontracker: Tracking and Predicting the Carbon Footprint of Training Deep Learning Models](https://arxiv.org/abs/2007.03051)
+- [Expected Validation Performance and Estimation of a Random Variable's Maximum](https://aclanthology.org/2021.findings-emnlp.342/)
+- [The Efficiency Misnomer](https://openreview.net/forum?id=iulEMLYh1uR)
+- [NeuralPower: Predict and Deploy Energy-Efficient Convolutional Neural Networks](https://proceedings.mlr.press/v77/cai17a.html)
 
 Quantization
 ----
