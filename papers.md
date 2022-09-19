@@ -125,6 +125,7 @@ Accelerating training
 - [Dataset Distillation](https://arxiv.org/abs/1811.10959)
 - [Competence-based curriculum learning for neural machine translation](https://arxiv.org/abs/1903.09848)
 - [Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks](https://arxiv.org/abs/1703.03400)
+- [AutoFL: Enabling Heterogeneity-Aware Energy Efficient Federated Learning](https://arxiv.org/abs/2107.08147)
 
 Carbon footprint and alternative power sources
 ----
@@ -133,7 +134,6 @@ Carbon footprint and alternative power sources
 - [Energy and Policy Considerations for Deep Learning in NLP](https://aclanthology.org/P19-1355/)
 - [On the opportunities and risks of foundation models (Section 5.3)](https://arxiv.org/abs/2108.07258)
 - [Quantifying the Carbon Emissions of Machine Learning](https://arxiv.org/abs/1910.09700)
-- [AutoFL: Enabling Heterogeneity-Aware Energy Efficient Federated Learning](https://arxiv.org/abs/2107.08147)
 - [Measuring the Carbon Intensity of AI in Cloud Instances](https://dl.acm.org/doi/10.1145/3531146.3533234)
 - [Towards the Systematic Reporting of the Energy and Carbon Footprints of Machine Learning](https://jmlr.org/papers/v21/20-312.html)
 - [Carbontracker: Tracking and Predicting the Carbon Footprint of Training Deep Learning Models](https://arxiv.org/abs/2007.03051)
