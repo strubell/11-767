@@ -26,6 +26,7 @@ Pruning
 - [Bayesian Bits: Unifying Quantization and Pruning](https://arxiv.org/abs/2005.07093)
 - [Structured Pruning of Neural Networks with Budget-Aware Regularization](https://ieeexplore.ieee.org/abstract/document/8953545)
 - [Block Pruning For Faster Transformers](https://aclanthology.org/2021.emnlp-main.829/)
+- [Structured Pruning Learns Compact and Accurate Models](https://aclanthology.org/2022.acl-long.107/)
 
 Neural architecture search
 ----
@@ -47,11 +48,7 @@ Benchmarking
 - [Roofline: an insightful visual performance model for multicore architectures](https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf)
 - [Evaluating the Energy Efficiency of Deep Convolutional Neural Networks on CPUs and GPUs](https://ieeexplore.ieee.org/document/7723730)
 - [Deep Learning Language Modeling Workloads: Where Time Goes on Graphics Processors](https://ieeexplore.ieee.org/document/9041972)
-- [Energy and Policy Considerations for Deep Learning in NLP](https://aclanthology.org/P19-1355/)
 - [IrEne: Interpretable Energy Prediction for Transformers](https://aclanthology.org/2021.acl-long.167/)
-- [Measuring the Carbon Intensity of AI in Cloud Instances](https://dl.acm.org/doi/10.1145/3531146.3533234)
-- [Towards the Systematic Reporting of the Energy and Carbon Footprints of Machine Learning](https://jmlr.org/papers/v21/20-312.html)
-- [Carbontracker: Tracking and Predicting the Carbon Footprint of Training Deep Learning Models](https://arxiv.org/abs/2007.03051)
 - [Expected Validation Performance and Estimation of a Random Variable's Maximum](https://aclanthology.org/2021.findings-emnlp.342/)
 - [The Efficiency Misnomer](https://openreview.net/forum?id=iulEMLYh1uR)
 - [NeuralPower: Predict and Deploy Energy-Efficient Convolutional Neural Networks](https://proceedings.mlr.press/v77/cai17a.html)
@@ -91,6 +88,7 @@ Architecture-specific tricks: Softmax
 Architecture-specific tricks: Embeddings/inputs
 ----
 - [Adaptive Input Representations for Neural Language Modeling](https://arxiv.org/abs/1809.1085)
+- [Embedding Recycling for Language Models](https://arxiv.org/abs/2207.04993)
 
 Task-specific tricks
 ----
@@ -131,11 +129,12 @@ Accelerating training
 Carbon footprint and alternative power sources
 ----
 - [Tackling Climate Change with Machine Learning](https://arxiv.org/abs/1906.05433)
+- [Aligning artificial intelligence with climate change mitigation](https://www.nature.com/articles/s41558-022-01377-7)
+- [Energy and Policy Considerations for Deep Learning in NLP](https://aclanthology.org/P19-1355/)
 - [On the opportunities and risks of foundation models (Section 5.3)](https://arxiv.org/abs/2108.07258)
 - [Quantifying the Carbon Emissions of Machine Learning](https://arxiv.org/abs/1910.09700)
 - [AutoFL: Enabling Heterogeneity-Aware Energy Efficient Federated Learning](https://arxiv.org/abs/2107.08147)
+- [Measuring the Carbon Intensity of AI in Cloud Instances](https://dl.acm.org/doi/10.1145/3531146.3533234)
+- [Towards the Systematic Reporting of the Energy and Carbon Footprints of Machine Learning](https://jmlr.org/papers/v21/20-312.html)
+- [Carbontracker: Tracking and Predicting the Carbon Footprint of Training Deep Learning Models](https://arxiv.org/abs/2007.03051)
 
-New papers
-----
-- [Structured Pruning Learns Compact and Accurate Models](https://aclanthology.org/2022.acl-long.107/)
-- [Embedding Recycling for Language Models](https://arxiv.org/abs/2207.04993)
