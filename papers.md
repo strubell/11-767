@@ -52,6 +52,7 @@ Benchmarking
 - [Expected Validation Performance and Estimation of a Random Variable's Maximum](https://aclanthology.org/2021.findings-emnlp.342/)
 - [The Efficiency Misnomer](https://openreview.net/forum?id=iulEMLYh1uR)
 - [NeuralPower: Predict and Deploy Energy-Efficient Convolutional Neural Networks](https://proceedings.mlr.press/v77/cai17a.html)
+- [Beyond Preserved Accuracy: Evaluating Loyalty and Robustness of BERT Compression](https://aclanthology.org/2021.emnlp-main.832/)
 
 Quantization
 ----
