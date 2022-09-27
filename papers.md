@@ -68,6 +68,7 @@ Quantization
 - [HAWQ: Hessian AWare Quantization of Neural Networks with Mixed-Precision](https://arxiv.org/abs/1905.03696)
 - [Profile-Driven Automated Mixed Precision](https://arxiv.org/abs/1606.00251)
 - [Mixed Precision Training](https://openreview.net/forum?id=r1gs9JgRZ)
+- [Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation](https://arxiv.org/abs/1308.3432)
 
 Multimodal
 ----
