@@ -66,6 +66,8 @@ Quantization
 - [Binarized Neural Networks](https://arxiv.org/abs/1602.02830)
 - [Training Deep Neural Networks with 8-bit Floating Point Numbers](https://arxiv.org/abs/1812.08011)
 - [HAWQ: Hessian AWare Quantization of Neural Networks with Mixed-Precision](https://arxiv.org/abs/1905.03696)
+- [Profile-Driven Automated Mixed Precision](https://arxiv.org/abs/1606.00251)
+- [Mixed Precision Training](https://openreview.net/forum?id=r1gs9JgRZ)
 
 Multimodal
 ----
