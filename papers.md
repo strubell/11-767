@@ -69,6 +69,7 @@ Quantization
 - [Profile-Driven Automated Mixed Precision](https://arxiv.org/abs/1606.00251)
 - [Mixed Precision Training](https://openreview.net/forum?id=r1gs9JgRZ)
 - [Estimating or Propagating Gradients Through Stochastic Neurons for Conditional Computation](https://arxiv.org/abs/1308.3432)
+- [Differentiable Model Compression via Pseudo Quantization Noise](https://arxiv.org/abs/2104.09987)
 
 Multimodal
 ----
