@@ -71,7 +71,7 @@ to implement PyTorch dynamic quantization for your models.
 Static quantization in PyTorch
 ----
 
-Extra Credit: Benchmarking dynamic quantization
+Extra Credit: Benchmarking mixed precision training
 ----
 
 
