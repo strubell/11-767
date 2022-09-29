@@ -123,10 +123,10 @@ Dynamic quantization in PyTorch
 First, you will apply dynamic quantization to your models. Follow the [PyTorch quantization tutorial](https://pytorch.org/tutorials/recipes/recipes/dynamic_quantization.html) 
 to implement PyTorch dynamic quantization for your models.
 
-Quantize to both `float16` and `qint8` precision, and report your results. You should fill out all the cells containing ? in the tables below, with the other cells coming from previous tables.
+Quantize to both `float16` and `qint8` precision, and report your results. 
 
 **REPORT:**
-Copy values from above and expand
+Copy values from above and expand. You should fill out all the cells containing ? in the tables below, with the other cells coming from previous tables.
 
 | Model | Q  | dtype     | Size (MB) | (Params) | Accuracy | Latency B1 | B64 |
 | ----- | -- | -----     | ---- | -------- | -------- | ---------- | --- |
