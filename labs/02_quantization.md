@@ -48,6 +48,16 @@ For the models in this assignment you will experiment with variants of the feed-
 3. Lab 2 MNIST (see next table)
 4. Lab 2 SST-2 (see second table below)
 
+The Lab 1 models are the models trained with the default hyperparameters from Lab 1, and no transformations of the input (vocab size, image resolution):
+
+| hyperparameter | value |
+| --- | --- |
+| learning rate | 0.001 |
+| batch size | 100 |
+| hidden size  | 512 | 
+| # hidden layers | 1 | 
+| training epochs | 2 |
+
 ### MNIST
 Here are the model and training hyperparameters you should use for the Lab 2 MNIST model:
 | hyperparameter  | value |
