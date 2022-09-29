@@ -1,6 +1,6 @@
 Lab 2: Quantization
 ===
-This lab is a opportunity to explore different quantization strategies and settings, with the goal of becoming familiar with post-training quantization (PTQ) quantization in PyTorch. Several of the results in this lab are unlikely to directly transfer to other people's settings. 
+This lab is a opportunity to explore different quantization strategies and settings, with the goal of becoming familiar with post-training quantization (PTQ) in PyTorch. 
 
 You will be looking at how three properties vary as a result of model quantization:
 1. Model size (in memory)
@@ -12,7 +12,7 @@ The techniques we are exploring are:
 2. Static Quantization 
 
 Values in our models will be quantized from `float32` to `float16` and `qint8`.
-Additionally, all results will be reported both for SST-2 and MNIST.
+Additionally, all results will be reported both for SST-2 and MNIST. Due to hardware differences, several of the results in this lab are unlikely to directly transfer to other people's settings. 
 
 Hardware
 ----
