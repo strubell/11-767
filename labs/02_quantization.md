@@ -1,6 +1,6 @@
 Lab 2: Quantization
 ===
-This lab is a opportunity to explore different quantization strategies and settings, with the goal of becoming familiar with post-training quantization (PTQ) in PyTorch. 
+This lab is a opportunity to explore different quantization strategies and settings, with the goal of becoming familiar with post-training quantization (PTQ) in PyTorch, and thinking about how and when quantization can be a useful strategy for model compression. 
 
 You will be looking at how three properties vary as a result of model quantization:
 1. Model size (in memory)
