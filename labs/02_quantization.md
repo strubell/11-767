@@ -177,7 +177,7 @@ Extra Credit:
 This assignment includes two opportunities for extra credit.
 
 #### 1. Benchmarking mixed precision training [0.5 points]
-Add an additional comparison to your results table for mixed precision training.
+Add an additional comparison to your results table using [automatic mixed precision training](https://pytorch.org/tutorials/recipes/recipes/amp_recipe.html).
 This requires access to appropriate hardware that supports mixed-precision training (either a personal or lab GPU or via Colab).
 
 #### 2. Module-by-module sensitivity analysis [2 points]
