@@ -167,9 +167,9 @@ Choose **two** axes of interest and discuss each in more detail. They need not b
 
 Overall discussion and future work
 ----
-Describe one observation you made while completing this assignment that you found most interesting or surprising. 
-Now, pose an follow-up question related to this observation (a research question or hypothesis) that is unanswered by the work in this assignment, 
-and describe an experiment of set of experiments that you might perform in order to answer that question. You do not need to run the experiments, just describe how you might go about answering or at least helping to elicidate an answer to the question. 
+**Describe one observation you made** while completing this assignment that you found most interesting or surprising. 
+Now, **pose a follow-up question related to this observation** (a research question or hypothesis) that is unanswered by the work in this assignment, 
+and **describe in detail an experiment of set of experiments that you might perform** in order to answer that question. You do not need to run the experiments, just describe how you might go about answering or at least helping to elicidate an answer to the question. 
 
 Extra Credit: 
 ----
