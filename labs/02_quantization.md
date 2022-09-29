@@ -99,24 +99,22 @@ q=print_size_of_model(quantized_mnist,"int8")
 print("{0:.2f} times smaller".format(f/q))
 ```
 
-
-### Document
+**REPORT:**
 Evaluate and report the inference latency of both models for batch sizes in [1, 64]. 
 Report the size of all four models.
-This provides your baselines for comparison to quantization
+This provides your baselines for comparison to quantization. You should fill out all the cells containing ? in the tables below.
 
-**REPORT:**
 #### MNIST
 | Model | Q  | dtype     | Size (MB) | (Params) | Accuracy | Latency B1 | B64 |
 | ----- | -- | -----     | ---- | -------- | -------- | ---------- | --- |
-| Lab 1 | -- | `float32` |      |          |            |     |      |
-| Lab 2 | -- | `float32` |      |          |            |     |      |
+| Lab 1 | -- | `float32` |   ?   |     ?     |     ?       |  ?  |  ?    |
+| Lab 2 | -- | `float32` |   ?   |    ?      |       ?     |  ?   | ?     |
 
 #### SST
 | Model | Q  | dtype     | Size (MB) | (Params) | Accuracy | Latency B1 | B64 |
 | ----- | -- | -----     | ---- | -------- | -------- | ---------- | --- |
-| Lab 1 | -- | `float32` |      |          |            |     |      |
-| Lab 2 | -- | `float32` |      |          |            |     |      |
+| Lab 1 | -- | `float32` |  ?    |   ?       |  ?          |  ?   |  ?    |
+| Lab 2 | -- | `float32` |   ?   |    ?      |    ?        |  ?   |  ?    |
 
 
 
@@ -125,7 +123,7 @@ Dynamic quantization in PyTorch
 First, you will apply dynamic quantization to your models. Follow the [PyTorch quantization tutorial](https://pytorch.org/tutorials/recipes/recipes/dynamic_quantization.html) 
 to implement PyTorch dynamic quantization for your models.
 
-Quantize to both `float16` and `qint8` precision, and report your results.
+Quantize to both `float16` and `qint8` precision, and report your results. You should fill out all the cells containing ? in the tables below, with the other cells coming from previous tables.
 
 **REPORT:**
 Copy values from above and expand
