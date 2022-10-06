@@ -28,6 +28,7 @@ Pruning
 - [Structured Pruning of Neural Networks with Budget-Aware Regularization](https://ieeexplore.ieee.org/abstract/document/8953545)
 - [Block Pruning For Faster Transformers](https://aclanthology.org/2021.emnlp-main.829/)
 - [Structured Pruning Learns Compact and Accurate Models](https://aclanthology.org/2022.acl-long.107/)
+- [Drawing Early-Bird Tickets: Towards More Efficient Training of Deep Networks](https://openreview.net/forum?id=BJxsrgStvr)
 
 Neural architecture search
 ----
