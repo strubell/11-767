@@ -18,6 +18,7 @@ Distillation
 - [Sequence-Level Knowledge Distillation](https://arxiv.org/abs/1606.07947)
 - [DynaBERT: Dynamic BERT with Adaptive Width and Depth](https://proceedings.neurips.cc/paper/2020/hash/6f5216f8d89b086c18298e043bfe48ed-Abstract.html)
 - [Does Knowledge Distillation Really Work?](https://proceedings.neurips.cc/paper/2021/hash/376c6b9ff3bedbbea56751a84fffc10c-Abstract.html)
+- [Understanding Knowledge Distillation in Non-autoregressive Machine Translation](https://openreview.net/forum?id=BygFVAEKDH)
 
 Pruning
 ----
