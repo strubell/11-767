@@ -21,6 +21,7 @@ Distillation
 
 Pruning
 ----
+- [Huge list of papers on neural network pruning](https://github.com/he-y/Awesome-Pruning)
 - [Optimal Brain Damage](https://papers.nips.cc/paper/1989/hash/6c9882bbac1c7093bd25041881277658-Abstract.html)
 - [The Lottery Ticket Hypothesis: Finding Sparse, Trainable Neural Networks](https://arxiv.org/abs/1803.03635)
 - [The Lottery Ticket Hypothesis: A Survey (blog post)](https://roberttlange.github.io/posts/2020/06/lottery-ticket-hypothesis/)
