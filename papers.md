@@ -32,6 +32,8 @@ Pruning
 - [Structured Pruning Learns Compact and Accurate Models](https://aclanthology.org/2022.acl-long.107/)
 - [Drawing Early-Bird Tickets: Towards More Efficient Training of Deep Networks](https://openreview.net/forum?id=BJxsrgStvr)
 - [Pixelated Butterfly: Simple and Efficient Sparse training for Neural Network Models](https://openreview.net/forum?id=Nfl-iXa-y7R)
+- [Proving the Lottery Ticket Hypothesis for Convolutional Neural Networks](https://openreview.net/forum?id=Vjki79-619-)
+- [Learning Pruning-Friendly Networks via Frank-Wolfe: One-Shot, Any-Sparsity, And No Retraining](https://openreview.net/forum?id=O1DEtITim__)
 
 Neural architecture search
 ----
