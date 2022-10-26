@@ -111,25 +111,32 @@ Here is some example code you might use to plot these values using Matplotlib:
 TODO
 ```
 
-[**discussion question**] Comment on disk size and latency and why these models might be bigger (on disk) or slower (inference latency). 
+[**Discussion question**] Comment on disk size and latency and why these models might be bigger (on disk) or slower (inference latency). 
 
 Iterative magnitude pruning
 ---
-TODO
-(loading and saving shouldn't be too big a deal, or if it is, we can just give them crucial code. basically repeat above section with extra steps in between pruning steps)
+TODO: with and without rewinding. Plot all three on the same plot.
+(basically repeat above section with extra steps in between pruning steps. loading and saving shouldn't be too big a deal, or if it is, we can just give them crucial code. )
 
 (if asking for more iterations, only ask them to report vaguely like "when" they start to see performance drop off, and/or plots!)
 
 
 
-Plots!
----
-comparison plot (maybe just pairwise and integrated into the above sections. we can provide code if it turns out to be too complicated)
-
 Extra Credit
 ---
-possibilities:
-- implement custom pruning method
-  - e.g. 2nd order pruning
-- pruning AND quantization
-~prizes~ for creativity, accuracy, speed, etc?
+#### 1. Implement a custom pruning method [1 point]
+Implement an additional pruning method, and report your results. For example, you might implement structured pruning, second-order pruning, or anything else. Be creative! In order to get full credit, you must clearly describe your approach, and why you think it should work. You should apply your approach in the iterative magnitude pruning paradigm, and perform multiple iterations of pruning.
+
+#### 2. Combining quantization and pruning [1 point]
+Combine quantization from Lab 2 with iterative magnitude pruning from this lab, and report your results in terms of accuracy and size on disk. You can combine the approaches however you wish, but to get full credit you must clearly describe what type of quantization you used and how exactly you combined the approaches, and why you think that should work. You only have to report results for one sparsity level. 
+
+
+Grading and submission (10 points + 2 extra credit)
+----
+Submit your answers to all the above questions to Canvas as a write-up in pdf format. This assignment is worth 10 points 
+(or 10% of your final grade for the class), distributed as follows: 
+- **Submission [2 points]:** Assignment is submitted on time.
+- **Basic requirements [5 points]:** Answers to all the questions (including all requested tables) are included in the write-up. 
+- **Report [2 points]:** Report is well-written and organized with minimal typos and formatting mistakes, and answers to all requested questions are easy to find. Tables are readable and well-labeled. Your results should be easily reproducible from the details included in your report.
+- **Thoughtful discussion [1 points]:** The discussion of results in your write-up is thoughtful: it indicates meaningful engagement with the exercise and it is clear that you put effort into thinking through and explaining your results.
+- **Extra Credit [2.5 points]:** See above for description of possible extra credit.
