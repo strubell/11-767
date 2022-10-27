@@ -55,7 +55,7 @@ Also take a look at your model's `named_parameters()`. You'll need these later (
 
 Unstructured magnitude pruning
 ---
-First, you will perform global, unstructured magnitude (L1) pruning on the model to a sparsity level of **30%**. Prune just the weight parameters (not biases). 
+First, you will perform global, unstructured magnitude (L1) pruning on the model to a sparsity level of **33%**. Prune just the weight parameters (not biases). 
 You should be able to use the `global_unstructured` pruning method in the PyTorch prune module.
 For usage examples, see the [PyTorch pruning tutorial](https://pytorch.org/tutorials/intermediate/pruning_tutorial.html). 
 
