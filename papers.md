@@ -86,6 +86,22 @@ Multimodal
 - [VisualBERT: A Simple and Performant Baseline for Vision and Language](https://arxiv.org/abs/1908.03557)
 - [Mapping Navigation Instructions to Cont. Control Actions with Position-Visitation Pred.](https://arxiv.org/abs/1811.04179)
 - [Early Fusion for Goal Directed Robotic Vision](https://arxiv.org/abs/1811.08824)
+- [ViLT: Vision-and-Language Transformer Without Convolution or Region Supervision](https://arxiv.org/abs/2102.03334)
+- [Supervision Exists Everywhere: A Data Efficient Contrastive Language-Image Pre-training Paradigm](https://arxiv.org/abs/2110.05208)
+- [Blockwise Streaming Transformer for Spoken Language Understanding and Simultaneous Speech Translation](https://arxiv.org/abs/2204.08920)
+- [DeeCap: Dynamic Early Exiting for Efficient Image Captioning](https://openaccess.thecvf.com/content/CVPR2022/papers/Fei_DeeCap_Dynamic_Early_Exiting_for_Efficient_Image_Captioning_CVPR_2022_paper.pdf)
+- [MeMViT: Memory-Augmented Multiscale Vision Transformer for Efficient Long-Term Video Recognition](https://openaccess.thecvf.com/content/CVPR2022/html/Wu_MeMViT_Memory-Augmented_Multiscale_Vision_Transformer_for_Efficient_Long-Term_Video_Recognition_CVPR_2022_paper.html) 
+- [EfficientVLM: Fast and Accurate Vision-Language Models via Knowledge Distillation and Modal-adaptive Pruning](https://arxiv.org/abs/2210.07795)
+- [Long-Short Transformer: Efficient Transformers for Language and Vision](https://arxiv.org/abs/2107.02192)
+
+Vision / Robotics 
+----
+- [Learning Transferable Architectures for Scalable Image Recognition](https://openaccess.thecvf.com/content_cvpr_2018/papers/Zoph_Learning_Transferable_Architectures_CVPR_2018_paper.pdf)
+- [AdaViT: Adaptive Vision Transformers for Efficient Image Recognition](https://openaccess.thecvf.com/content/CVPR2022/html/Meng_AdaViT_Adaptive_Vision_Transformers_for_Efficient_Image_Recognition_CVPR_2022_paper.html)
+- [MobileViT: Light-weight, General-purpose, and Mobile-friendly Vision Transformer](https://arxiv.org/abs/2110.02178)
+- [Fast and Furious: Real Time End-to-End 3D Detection, Tracking and Motion Forecasting with a Single Convolutional Net](https://openaccess.thecvf.com/content_cvpr_2018/papers/Luo_Fast_and_Furious_CVPR_2018_paper.pdf)
+- [MicroNets: Neural Network Architectures for Deploying TinyML Applications on Commodity Microcontrollers](https://arxiv.org/abs/2010.11267)
+- [ES6D: A Computation Efficient and Symmetry-Aware 6D Pose Regression Framework](https://openaccess.thecvf.com/content/CVPR2022/papers/Mo_ES6D_A_Computation_Efficient_and_Symmetry-Aware_6D_Pose_Regression_Framework_CVPR_2022_paper.pdf)
 
 Architecture-specific tricks: CNNs
 ----
