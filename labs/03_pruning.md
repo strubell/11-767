@@ -144,20 +144,20 @@ Using your new disk size function, fill in the next row of the same table:
 | Iteration | Sparsity (%) | Accuracy | Latency (s) | Disk Size (MB) |
 | ------- | ------- | ------ | ------- | ------ |
 |     0   |   0.0%  |        |         |        |
-|     1   |   30.0%   |    ?    |    ?    |    ?    |
+|     1   |   33.0%   |    ?    |    ?    |    ?    |
 
 
 Repeated unstructured magnitude pruning
 ---
-Now, keep performing the same unstructured magnitude pruning of 30% of the remaining weights on the same model (without re-training or resetting the model). 
-You will apply the same function as above with the same 0.3 proportion parameter.
+Now, keep performing the same unstructured magnitude pruning of 33% of the remaining weights on the same model (without re-training or resetting the model). 
+You will apply the same function as above with the same 0.33 proportion parameter.
 
 6. Collect values for the rest of this table, keeping in mind that you will need to plot the results later. You might want to keep the values in Pandas DataFrames (see the section on **plotting it all together** below.) Sparsity reported should be the percentage of *prunable* parameters pruned. 
 
 | Iteration | Sparsity (%) | Accuracy | Latency (s) | Disk Size (MB) |
 | ------- | ------- | ------ | ------- | ------ |
 |     0   |   0.0%  |        |         |        |
-|     1   |   30.0%   |        |         |        |
+|     1   |   33.0% |        |         |        |
 |     2   |         |        |         |        |
 |     3   |         |        |         |        |
 |     4   |         |        |         |        |
@@ -165,7 +165,17 @@ You will apply the same function as above with the same 0.3 proportion parameter
 |     6   |         |        |         |        |
 |     7   |         |        |         |        |
 |     8   |         |        |         |        |
-|     9   |         |        |         |        |
+|    10   |         |        |         |        |
+|    11   |         |        |         |        |
+|    12   |         |        |         |        |
+|    13   |         |        |         |        |
+|    14   |         |        |         |        |
+|    15   |         |        |         |        |
+|    16   |         |        |         |        |
+|    17   |         |        |         |        |
+|    18   |         |        |         |        |
+|    19   |         |        |         |        |
+|    20   |         |        |         |        |
 
 **Tip:** Evaluating pruned models. *Assuming you have an e.g. `evaluate()` function that takes in your (pruned) model, dataloader, and possibly additional arguments*, you could use a function similar to this to evaluate models without the overhead of applying parameter masks on-the-fly (this can be useful especially if your `evaluate` function returns latency information).
 ```py
