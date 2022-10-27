@@ -1,6 +1,6 @@
 Lab 3: Pruning
 ===
-This lab is an opportunity to explore different pruning strategies and settings, with the goal of becoming familiar with unstructured pruning, iterative and non-iterative pruning, and criteria for selecting parameters for pruning.
+This lab is an opportunity to explore different pruning strategies and settings, with the goal of becoming familiar with unstructured, iterative and non-iterative pruning in PyTorch, and some of the trade-offs of using such an approach for model compression.
 
 Throughout this lab, we will use the term **sparsity level** to refer to the percent of the original model's *prunable* weights (**weight parameters, excluding bias parameters**) that have been pruned.
 
@@ -8,7 +8,7 @@ If you are compute-resource-constrained (i.e. your personal laptop takes a reall
 
 Preliminaries & Setup
 ---
-0. Share your hardware specs
+0. Share the hardware specs for the machine you will be using to run the experiments in this lab.
 1. Copy over relevant code for training MNIST from Lab 2 (just the "Lab 2" model), including code for evaluation (in particular, accuracy, latency, and size on disk), *but don't train yet*!
 
 | hyperparameter  | value |
@@ -56,8 +56,8 @@ Also take a look at your model's `named_parameters()`. You'll need these later (
 Unstructured magnitude pruning
 ---
 First, you will perform global, unstructured magnitude (L1) pruning on the model to a sparsity level of **30%**. Prune just the weight parameters (not biases). 
-You should be able to use the `global_unstructured` pruning method in the PyTorch prune moduse.
-For usage examples, see the [pytorch pruning tutorial](https://pytorch.org/tutorials/intermediate/pruning_tutorial.html). 
+You should be able to use the `global_unstructured` pruning method in the PyTorch prune module.
+For usage examples, see the [PyTorch pruning tutorial](https://pytorch.org/tutorials/intermediate/pruning_tutorial.html). 
 
 Example input:
 ```
