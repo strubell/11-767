@@ -77,7 +77,67 @@ Take a look at your `model.named_parameters()` again, and your `model.named_buff
     -  for the model overall
    **And report each of these values:** the sparsity level at each layer, across all pruned layers, and for the model overall.
 5. Write a function to calculate the amount of space that a pruned model takes up when reparameterization is removed and tensors are converted to *sparse* representations.
-[**TODO**: somehow share or paste in the notebook's "aside" which should give them a hint]
+
+**Tip:** Note that storage size actually *grows* when we first prune a model. Below we give some pointers on how to actually convert and store the parameters in a sparse format on disk.
+
+Consider:
+```
+example_model = FFN(1024, 20*20, 10, num_layers=2)
+tr_loss, tr_time = train(example_model, tr_mnist, num_classes=10, log_every=500)
+f=print_size_of_model(example_model,"full unpruned")
+```
+Now, we prune this example model by 90% all at once (we probably don't want to do this in practice):
+```
+example_prune_params = [(example_model.layers[0], 'weight'),
+                           (example_model.layers[1], 'weight'),
+                           (example_model.out, 'weight')]
+
+prune.global_unstructured(example_prune_params, pruning_method=prune.L1Unstructured, amount=0.9)
+```
+And even though the output of `calculate_sparsity` should show roughly 90% across the board...
+```
+p=print_size_of_model(example_model, "newly pruned")
+print("{0:.2f} times smaller".format(f/p))
+```
+Observe that model size is doubled.
+This is because mask buffers are stored in addition to the original parameters.
+So we might want to convert to sparse representations when storing on disk.
+First, we remove the reparameterization, i.e. make the pruning "permanent":
+```
+for p in example_prune_params:
+    # p takes the form (module, 'weight')
+    prune.remove(*p)
+```
+Now, we can easily convert the parameters to sparse representations:
+```
+sd = example_model.state_dict()
+for item in sd:
+    # if 'weight' in item: # shortcut, this assumes you pruned (and removed reparameterization for) all weight parameters
+    #     print("sparsifying", item)
+    sd[item] = example_model.state_dict()[item].to_sparse()
+sd
+```
+
+Now, we can check and see that when we save this sparse state dict it is indeed smaller:
+```
+# now, you can save the sparse model
+torch.save(sd, "model.pt")
+
+# measure new size on disk:
+print(f'{os.path.getsize("model.pt")/1e6} MB')
+
+# notice not actually 1/10 of the size but oh well
+```
+
+And, we can load this model and use as normal as well:
+```
+# if you want to load and use this sparsified model:
+sd = torch.load("model.pt") # first load state dict from disk
+
+# now, update a new model's state dict with your stored values, converting back to dense representations as needed
+new_model = FFN(1024, 20*20, 10, num_layers=2)
+new_model.load_state_dict({k:(v if v.layout == torch.strided else v.to_dense()) for k,v in sd.items()})
+```
 
 Using your new disk size function, fill in the next row of the same table:
 
@@ -107,7 +167,7 @@ You will apply the same function as above with the same 0.3 proportion parameter
 |     8   |         |        |         |        |
 |     9   |         |        |         |        |
 
-**Tip:** evaluating pruned models. *Assuming you have an `evaluate()` function that takes in your (pruned) model, dataloader, and possibly additional arguments*, you could use a function similar to this to evaluate models without the overhead of applying parameter masks on the fly (can be useful especially if your `evaluate` function returns latency information)
+**Tip:** evaluating pruned models. *Assuming you have an e.g. `evaluate()` function that takes in your (pruned) model, dataloader, and possibly additional arguments*, you could use a function similar to this to evaluate models without the overhead of applying parameter masks on-the-fly (this can be useful especially if your `evaluate` function returns latency information).
 ```
 from copy import deepcopy
 
@@ -124,7 +184,7 @@ def sparse_evaluate(model, dataloader, num_classes=2):
     
     return evaluate(model_copy, dataloader, num_classes)
 ```
-**Note: does not actually run sparse inference** - there are other frameworks that can help with that, but you're not expected to implement that for this lab.
+**Note: this does not actually run sparse inference** - there are other frameworks that can help with that, but you're not expected to implement that for this lab.
 
 Iterative magnitude pruning (IMP)
 ---
