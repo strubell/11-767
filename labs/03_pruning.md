@@ -250,4 +250,4 @@ Submit your answers to all the above questions to Canvas as a write-up in pdf fo
 - **Basic requirements [5 points]:** Answers to all the questions (including all requested tables) are included in the write-up. 
 - **Report [2 points]:** Report is well-written and organized with minimal typos and formatting mistakes, and answers to all requested questions are easy to find. Tables are readable and well-labeled. Your results should be easily reproducible from the details included in your report.
 - **Thoughtful discussion [1 points]:** The discussion of results in your write-up is thoughtful: it indicates meaningful engagement with the exercise and it is clear that you put effort into thinking through and explaining your results.
-- **Extra Credit [2.5 points]:** See above for description of possible extra credit.
+- **Extra Credit [2 points]:** See above for description of possible extra credit.
