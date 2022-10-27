@@ -21,7 +21,7 @@ Preliminaries & Setup
 
 Recall from Lab 2 that you can measure model size on disk in this way:
 
-```
+```py
 import os
 
 def print_size_of_model(model, label=""):
@@ -33,7 +33,7 @@ def print_size_of_model(model, label=""):
 ```
 You can then compare model sizes:
 
-```
+```py
 f=print_size_of_model(model1, "model1")
 q=print_size_of_model(model2, "model2")
 print("{0:.2f} times smaller".format(f/q))
@@ -60,13 +60,13 @@ You should be able to use the `global_unstructured` pruning method in the PyTorc
 For usage examples, see the [PyTorch pruning tutorial](https://pytorch.org/tutorials/intermediate/pruning_tutorial.html). 
 
 Example input:
-```
+```py
 [(model.layers[0], 'weight'),
 (model.layers[1], 'weight'),
 (model.out, 'weight')]
 ```
 or
-```
+```py
 [(m[1], "weight") for m in model.named_modules() if len(list(m[1].children()))==0]
 ```
 Take a look at your `model.named_parameters()` again, and your `model.named_buffers()`. (Just observe, no need to answer a question.)
@@ -81,13 +81,13 @@ Take a look at your `model.named_parameters()` again, and your `model.named_buff
 **Tip:** Note that storage size actually *grows* when we first prune a model. Below we give some pointers on how to actually convert and store the parameters in a sparse format on disk.
 
 Consider:
-```
+```py
 example_model = FFN(1024, 20*20, 10, num_layers=2)
 tr_loss, tr_time = train(example_model, tr_mnist, num_classes=10, log_every=500)
 f=print_size_of_model(example_model,"full unpruned")
 ```
 Now, we prune this example model by 90% all at once (we probably don't want to do this in practice):
-```
+```py
 example_prune_params = [(example_model.layers[0], 'weight'),
                            (example_model.layers[1], 'weight'),
                            (example_model.out, 'weight')]
@@ -95,7 +95,7 @@ example_prune_params = [(example_model.layers[0], 'weight'),
 prune.global_unstructured(example_prune_params, pruning_method=prune.L1Unstructured, amount=0.9)
 ```
 And even though the output of `calculate_sparsity` should show roughly 90% across the board...
-```
+```py
 p=print_size_of_model(example_model, "newly pruned")
 print("{0:.2f} times smaller".format(f/p))
 ```
@@ -103,13 +103,13 @@ Observe that model size is doubled.
 This is because mask buffers are stored in addition to the original parameters.
 So we might want to convert to sparse representations when storing on disk.
 First, we remove the reparameterization, i.e. make the pruning "permanent":
-```
+```py
 for p in example_prune_params:
     # p takes the form (module, 'weight')
     prune.remove(*p)
 ```
 Now, we can easily convert the parameters to sparse representations:
-```
+```py
 sd = example_model.state_dict()
 for item in sd:
     # if 'weight' in item: # shortcut, this assumes you pruned (and removed reparameterization for) all weight parameters
@@ -119,7 +119,7 @@ sd
 ```
 
 Now, we can check and see that when we save this sparse state dict it is indeed smaller:
-```
+```py
 # now, you can save the sparse model
 torch.save(sd, "model.pt")
 
@@ -130,7 +130,7 @@ print(f'{os.path.getsize("model.pt")/1e6} MB')
 ```
 
 And, we can load this model and use as normal as well:
-```
+```py
 # if you want to load and use this sparsified model:
 sd = torch.load("model.pt") # first load state dict from disk
 
@@ -168,7 +168,7 @@ You will apply the same function as above with the same 0.3 proportion parameter
 |     9   |         |        |         |        |
 
 **Tip:** evaluating pruned models. *Assuming you have an e.g. `evaluate()` function that takes in your (pruned) model, dataloader, and possibly additional arguments*, you could use a function similar to this to evaluate models without the overhead of applying parameter masks on-the-fly (this can be useful especially if your `evaluate` function returns latency information).
-```
+```py
 from copy import deepcopy
 
 def sparse_evaluate(model, dataloader, num_classes=2):
@@ -201,7 +201,7 @@ In your iterative magnitude pruning training loop, there are some special consid
 Recall that, after each round of pruning, we want to *reset* all remaining weights to their values at initialization. For example, if you have a model's `state_dict()` saved at the relative path `"data/model_init.pt"`, you can use `torch.load("data/model_init.pt")` to reload the dict. 
 
 Now, because the exact parameter names do not match the state dict that of the (unpruned) model at initialization, you will have to go out of your way to align them. Assuming you have e.g. `prune_param_list = ['layers.0.weight', 'layers.1.weight', 'out.weight']`, you can use:
-```
+```py
 init_updated = {k + ("_orig" if k in prune_param_list else ""):v for k,v in init_weights.items()}
 ffn_mnist_copy = copy.deepcopy(ffn_mnist.state_dict())
 ffn_mnist_copy.update(init_updated)
@@ -217,7 +217,7 @@ You should report 3 plots, each of which contains a line corresponding to each o
 
 Tip: If you have three Pandas DataFrames each containing columns for: 1) iteration number, 2) sparsity (of prunable parameters), 3) accuracy, 4) inference latency, and 5) size on disk, you can plot e.g. accuracy vs latency using a more elaborate version of this code (i.e. with a title and axis labels):
 Here is some example code you might use to plot these values using Matplotlib:
-```
+```py
 import matplotlib.pyplot as plt
 
 plt.plot(noniter_df['iteration'], noniter_df['latency'], color="C0", label="Pruning w/o retraining")
@@ -230,16 +230,16 @@ plt.show()
 
 Discussion
 ---
-- Choose two of the plots, describe the trends they depict, and compare and contrast the plots. Are there trends that you expected, or didn't expect, based on discussions and lectures in class, and/or your experience? Is there a clear drop-off in perofrmance at a certain sparsity level, and does that change across methods? 
-- In 3-4 sentences, pose one small follow-up experiment that you might run, based on these initial results. Your motivation, hypothesis and methodology for testing that hypothesis should be clear. You do not need to run the experiment.
+- Choose two of the plots, describe the trends they depict, and compare and contrast the plots. Are there trends that you expected, or didn't expect, based on discussions and lectures in class, and/or your experience? For example, is there a clear drop-off in performance at a certain sparsity level, and does that change across methods? Do latency and space on disk correspond to your expectations, why or why not?
+- In 4-5 sentences, pose one small follow-up experiment that you might run, based on these initial results. Your motivation (based on these results), hypothesis and methodology for testing that hypothesis should be clear. You do not need to run the experiment. (This can overlap with extra credit, if you choose to implement extra credit.)
 
 Extra Credit
 ---
 #### 1. Implement a custom pruning method [1 point]
-Implement an additional pruning method, and report your results. For example, you might implement structured pruning, second-order pruning, or anything else. Be creative! In order to get full credit, you must clearly describe your approach, and why you think it should work. You should apply your approach in the iterative magnitude pruning paradigm, and perform multiple iterations of pruning.
+Implement an additional pruning method, and report your results. For example, you might implement structured pruning, second-order pruning, or anything else. Be creative! In order to get full credit, you must clearly describe your approach, and why you think it should work (but it doesn't have to work better than L1 magnitude pruning, as long as it's well-motivated). You should apply your approach in the iterative magnitude pruning paradigm, perform multiple iterations of pruning, and plot the results. Discuss how these results compare to the other methods you implemented in this lab.
 
 #### 2. Combining quantization and pruning [1 point]
-Combine quantization from Lab 2 with iterative magnitude pruning from this lab, and report your results in terms of accuracy and size on disk. You can combine the approaches however you wish, but to get full credit you must clearly describe what type of quantization you used and how exactly you combined the approaches, and why you think that should work. You only have to report results for one sparsity level. 
+Combine quantization from Lab 2 with iterative magnitude pruning from this lab, and report your results in terms of accuracy and size on disk. You can combine the approaches however you wish, but to get full credit you must clearly describe what type of quantization you used and how exactly you combined the approaches, why you think that should work, and discuss your results. You only have to report results for one sparsity level. 
 
 
 Grading and submission (10 points + 2 extra credit)
