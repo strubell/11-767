@@ -167,7 +167,7 @@ You will apply the same function as above with the same 0.3 proportion parameter
 |     8   |         |        |         |        |
 |     9   |         |        |         |        |
 
-**Tip:** evaluating pruned models. *Assuming you have an e.g. `evaluate()` function that takes in your (pruned) model, dataloader, and possibly additional arguments*, you could use a function similar to this to evaluate models without the overhead of applying parameter masks on-the-fly (this can be useful especially if your `evaluate` function returns latency information).
+**Tip:** Evaluating pruned models. *Assuming you have an e.g. `evaluate()` function that takes in your (pruned) model, dataloader, and possibly additional arguments*, you could use a function similar to this to evaluate models without the overhead of applying parameter masks on-the-fly (this can be useful especially if your `evaluate` function returns latency information).
 ```py
 from copy import deepcopy
 
@@ -192,9 +192,9 @@ Now, repeat the same process as above, but re-train the remaining weights each t
 You will experiment with two settings: Re-training without rewinding, and re-training with rewinding. Implementation-wise,
 this should look just like the above, with some extra steps (training, and optionally rewinding) between each pruning step.
 
-7. **IMP without rewinding:** First, continue training the unpruned weights starting from their current value at each iteration, the value that was used to determine which weights to prune from the last iteration. Collect all the same numbers as specified in the table in the previous section.
+7. **IMP without rewinding:** Continue training the unpruned weights starting from their current value at each iteration, the value that was used to determine which weights to prune from the last iteration. Collect all the same numbers as specified in the table in the previous section. You should use the same training hyperparameters.
 
-8. **IMP with rewinding:** Recall from class that *rewinding* refers to resetting the weights to an earlier value, rather than the most recent value during iterative magnitude pruning. Implement retraining with rewinding to the weights' values at **model initialization**, before any training or pruning was performed. (This is why we asked you to save a copy of the initialized but untrained model weights in the beginning of the lab!) Collect all the same numbers as specified in the table in the previous section.
+8. **IMP with rewinding:** Recall from class that *rewinding* refers to resetting the weights to an earlier value, rather than the most recent value during iterative magnitude pruning. Implement retraining with rewinding to the weights' values at **model initialization**, before any training or pruning was performed. (This is why we asked you to save a copy of the initialized but untrained model weights in the beginning of the lab!) You should use the same training hyperparameters. Collect all the same numbers as specified in the table in the previous section.
 
 In your iterative magnitude pruning training loop, there are some special considerations you will need to make in order to get things working properly:
 
