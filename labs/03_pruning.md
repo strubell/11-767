@@ -53,7 +53,7 @@ print("{0:.2f} times smaller".format(f/q))
 Also take a look at your model's `named_parameters()`. You'll need these later (no need to put in the table).
 
 
-Basic pruning + more preliminaries
+Unstructured magnitude pruning
 ---
 First, you will perform global, unstructured magnitude (L1) pruning on the model to a sparsity level of **30%**. Prune just the weight parameters (not biases). 
 You should be able to use the `global_unstructured` pruning method in the PyTorch prune moduse.
@@ -107,6 +107,25 @@ You will apply the same function as above with the same 0.3 proportion parameter
 |     8   |         |        |         |        |
 |     9   |         |        |         |        |
 
+**Tip:** evaluating pruned models. *Assuming you have an `evaluate()` function that takes in your (pruned) model, dataloader, and possibly additional arguments*, you could use a function similar to this to evaluate models without the overhead of applying parameter masks on the fly (can be useful especially if your `evaluate` function returns latency information)
+```
+from copy import deepcopy
+
+def sparse_evaluate(model, dataloader, num_classes=2):
+    model_copy = deepcopy(model)
+    model_copy.eval()
+    
+    copy_params = [(model_copy.layers[0], 'weight'),
+                       (model_copy.layers[1], 'weight'),
+                       (model_copy.out, 'weight')]
+    # (we assume the same model architecture as the MNIST architecture we specify above)
+    for p in copy_params:
+        prune.remove(*p)
+    
+    return evaluate(model_copy, dataloader, num_classes)
+```
+**Note: does not actually run sparse inference** - there are other frameworks that can help with that, but you're not expected to implement that for this lab.
+
 Iterative magnitude pruning (IMP)
 ---
 Now, repeat the same process as above, but re-train the remaining weights each time (using the same hyperparameters). 
@@ -116,6 +135,18 @@ this should look just like the above, with some extra steps (training, and optio
 7. **IMP without rewinding:** First, continue training the unpruned weights starting from their current value at each iteration, the value that was used to determine which weights to prune from the last iteration. Collect all the same numbers as specified in the table in the previous section.
 
 8. **IMP with rewinding:** Recall from class that *rewinding* refers to resetting the weights to an earlier value, rather than the most recent value during iterative magnitude pruning. Implement retraining with rewinding to the weights' values at **model initialization**, before any training or pruning was performed. (This is why we asked you to save a copy of the initialized but untrained model weights in the beginning of the lab!) Collect all the same numbers as specified in the table in the previous section.
+
+In your iterative magnitude pruning training loop, there are some special considerations you will need to make in order to get things working properly:
+
+Recall that, after each round of pruning, we want to *reset* all remaining weights to their values at initialization. For example, if you have a model's `state_dict()` saved at the relative path `"data/model_init.pt"`, you can use `torch.load("data/model_init.pt")` to reload the dict. 
+
+Now, because the exact parameter names do not match the state dict that of the (unpruned) model at initialization, you will have to go out of your way to align them. Assuming you have e.g. `prune_param_list = ['layers.0.weight', 'layers.1.weight', 'out.weight']`, you can use:
+```
+init_updated = {k + ("_orig" if k in prune_param_list else ""):v for k,v in init_weights.items()}
+ffn_mnist_copy = copy.deepcopy(ffn_mnist.state_dict())
+ffn_mnist_copy.update(init_updated)
+ffn_mnist.load_state_dict(ffn_mnist_copy)
+```
 
 Plotting it all together
 ---
