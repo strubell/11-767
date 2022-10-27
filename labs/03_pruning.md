@@ -4,6 +4,8 @@ This lab is an opportunity to explore different pruning strategies and settings,
 
 Throughout this lab, we will use the term **sparsity level** to refer to the percent of the original model's *prunable* weights (**weight parameters, excluding bias parameters**) that have been pruned.
 
+If you are compute-resource-constrained (i.e. your personal laptop takes a really long time to perform a training run with the base model), you can change the hyperparameters somewhat to reduce computational burden -- e.g. training epochs, hidden size, but please clearly report what you did, try to keep the changes minimal, and be consistent throughout the assignment.
+
 Preliminaries & Setup
 ---
 0. Share your hardware specs
@@ -87,11 +89,10 @@ Using your new disk size function, fill in the next row of the same table:
 
 Repeated unstructured magnitude pruning
 ---
-Now, keep performing the same unstructured magnitude pruning of 30% of the remaining weights on the same model without re-training or resetting the model. 
+Now, keep performing the same unstructured magnitude pruning of 30% of the remaining weights on the same model (without re-training or resetting the model). 
 You will apply the same function as above with the same 0.3 proportion parameter.
 
-6. Collect values for the rest of this table, and plot them. Your plot should have **accuracy** on the x axis and **sparsity** on the y axis. 
-Sparsity reported should be the percentage of *prunable* parameters pruned.
+6. Collect values for the rest of this table, keeping in mind that you will need to plot the results later. You might want to keep the values in Pandas DataFrames (see the section on **plotting it all together** below.) Sparsity reported should be the percentage of *prunable* parameters pruned. 
 
 | Iteration | Sparsity (%) | Accuracy | Latency (s) | Disk Size (MB) |
 | ------- | ------- | ------ | ------- | ------ |
@@ -106,21 +107,40 @@ Sparsity reported should be the percentage of *prunable* parameters pruned.
 |     8   |         |        |         |        |
 |     9   |         |        |         |        |
 
+Iterative magnitude pruning (IMP)
+---
+Now, repeat the same process as above, but re-train the remaining weights each time (using the same hyperparameters). 
+You will experiment with two settings: Re-training without rewinding, and re-training with rewinding. Implementation-wise,
+this should look just like the above, with some extra steps (training, and optionally rewinding) between each pruning step.
+
+7. **IMP without rewinding:** First, continue training the unpruned weights starting from their current value at each iteration, the value that was used to determine which weights to prune from the last iteration. Collect all the same numbers as specified in the table in the previous section.
+
+8. **IMP with rewinding:** Recall from class that *rewinding* refers to resetting the weights to an earlier value, rather than the most recent value during iterative magnitude pruning. Implement retraining with rewinding to the weights' values at **model initialization**, before any training or pruning was performed. (This is why we asked you to save a copy of the initialized but untrained model weights in the beginning of the lab!) Collect all the same numbers as specified in the table in the previous section.
+
+Plotting it all together
+---
+You should report 3 plots, each of which contains a line corresponding to each of the experiments you performed above: pruning without retraining, IMP without rewinding, and IMP with rewinding. The three plots should have:
+   - **accuracy** on the x axis and **sparsity** on the y axis. 
+   - **accuracy** on the x axis and **disk space** on the y axis. 
+   - **accuracy** on the x axis and **inference latency** on the y axis. 
+
+Tip: If you have three Pandas DataFrames each containing columns for: 1) iteration number, 2) sparsity (of prunable parameters), 3) accuracy, 4) inference latency, and 5) size on disk, you can plot e.g. accuracy vs latency using a more elaborate version of this code (i.e. with a title and axis labels):
 Here is some example code you might use to plot these values using Matplotlib:
 ```
-TODO
+import matplotlib.pyplot as plt
+
+plt.plot(noniter_df['iteration'], noniter_df['latency'], color="C0", label="Pruning w/o retraining")
+plt.plot(IMP_df['iteration'], IMP_df['latency'], color="C1", label="IMP w/ rewind")
+plt.plot(stdprune_df['iteration'], stdprune_df['latency'], color="C2", label="IMP no rewind")
+plt.legend()
+# YOUR CODE for titles and axis labels, etc.
+plt.show()
 ```
 
-[**Discussion question**] Comment on disk size and latency and why these models might be bigger (on disk) or slower (inference latency). 
-
-Iterative magnitude pruning
+Discussion
 ---
-TODO: with and without rewinding. Plot all three on the same plot.
-(basically repeat above section with extra steps in between pruning steps. loading and saving shouldn't be too big a deal, or if it is, we can just give them crucial code. )
-
-(if asking for more iterations, only ask them to report vaguely like "when" they start to see performance drop off, and/or plots!)
-
-
+- Choose two of the plots, describe the trends they depict, and compare and contrast the plots. Are there trends that you expected, or didn't expect, based on discussions and lectures in class, and/or your experience? Is there a clear drop-off in perofrmance at a certain sparsity level, and does that change across methods? 
+- In 3-4 sentences, pose one small follow-up experiment that you might run, based on these initial results. Your motivation, hypothesis and methodology for testing that hypothesis should be clear. You do not need to run the experiment.
 
 Extra Credit
 ---
