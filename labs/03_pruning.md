@@ -215,7 +215,7 @@ You should report 3 plots, each of which contains a line corresponding to each o
    - **accuracy** on the x axis and **disk space** on the y axis. 
    - **accuracy** on the x axis and **inference latency** on the y axis. 
 
-Tip: If you have three Pandas DataFrames each containing columns for: 1) iteration number, 2) sparsity (of prunable parameters), 3) accuracy, 4) inference latency, and 5) size on disk, you can plot e.g. accuracy vs latency using a more elaborate version of this code (i.e. with a title and axis labels):
+**Tip:** If you have three Pandas DataFrames each containing columns for: 1) iteration number, 2) sparsity (of prunable parameters), 3) accuracy, 4) inference latency, and 5) size on disk, you can plot e.g. accuracy vs latency using a more elaborate version of this code (i.e. with a title and axis labels):
 Here is some example code you might use to plot these values using Matplotlib:
 ```py
 import matplotlib.pyplot as plt
