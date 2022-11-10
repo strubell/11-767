@@ -38,7 +38,7 @@ The router should send all port 22 traffic to the device, and you will ssh throu
 You will also need to enable ssh access to the device. By default, ssh will be disabled.
 
 0. Report the device you are using, and the operating system you're running on it.
-1. Make sure PyTorch is installed on the device.
+1. Make sure PyTorch is installed on the device. Report the version of PyTorch you're using. You can use the [`collect_env.py` script](https://raw.githubusercontent.com/pytorch/pytorch/master/torch/utils/collect_env.py) to check whether PyTorch is installed and thorough version reporting.
 
 Quantization on-device
 ---
