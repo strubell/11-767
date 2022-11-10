@@ -1,10 +1,6 @@
-Lab 4: Pruning
+Lab 4: On-Device
 ===
-This lab is an opportunity to explore different pruning strategies and settings, with the goal of becoming familiar with unstructured, iterative and non-iterative pruning in PyTorch, and some of the trade-offs of using such an approach for model compression.
-
-Throughout this lab, we will use the term **sparsity level** to refer to the percent of the original model's *prunable* weights (**weight parameters, excluding bias parameters**) that have been pruned.
-
-If you are compute-resource-constrained (i.e. your personal laptop takes a really long time to perform a training run with the base model), you can change the hyperparameters somewhat to reduce computational burden -- e.g. training epochs, hidden size, but please clearly report what you did, try to keep the changes minimal, and be consistent throughout the assignment.
+In this lab you will gain experience setting up and running models on a new, small device: Either the Jetson Nano or Raspberry Pi, depending on the device that has been assigned to your group. You will re-run code and experiments for quantization and pruning that you developed in Lab 2 and Lab 3, and compare your experiences and results to the original hardware (laptop or server) that you used for those assignments. You will also practice researching more detailed hardware specifications in order to understand what should or should not work on a given device and why.
 
 Preliminaries & Setup
 ---
@@ -61,7 +57,7 @@ Discussion
   Describe one notable thing that you learned by porting your code to this new device.
 - Choose either quantization or pruning, and compare and contrast your results from this lab and the previous lab. (Re-)report the hardware you used for the previous lab. 
   Are there trends that you expected, or didn't expect? For example, do latency and space on disk correspond to your expectations, why or why not? 
-  Explain what you observed. You should refer to specific capabilities of the hardware (such as whether it supports certain operations in certain precisions, or the extent to which it supports vector operations.) 
+  Explain what you observed. **You should refer to specific capabilities of the hardware** (such as whether it supports certain operations in certain precisions, or the extent to which it supports vector operations.) 
   
 In answering all of the questions in the above discussion, you will likely need to do some research to identify the cause for your findings. 
 You may want to start [here](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/specifications/) or [here](https://developer.arm.com/Architectures/A-Profile%20Architecture) for Raspberry Pi, and [here](https://developer.nvidia.com/embedded/downloads#?search=Jetson%20Nano) for Jetson Nano.
